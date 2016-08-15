@@ -1,0 +1,310 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		BE7EDA161D61E4F2004BB922 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE7EDA151D61E4F2004BB922 /* AppDelegate.swift */; };
+		BE7EDA181D61E4F2004BB922 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE7EDA171D61E4F2004BB922 /* ViewController.swift */; };
+		BE7EDA1B1D61E4F2004BB922 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BE7EDA191D61E4F2004BB922 /* Main.storyboard */; };
+		BE7EDA1E1D61E4F2004BB922 /* FanFit.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = BE7EDA1C1D61E4F2004BB922 /* FanFit.xcdatamodeld */; };
+		BE7EDA201D61E4F2004BB922 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BE7EDA1F1D61E4F2004BB922 /* Assets.xcassets */; };
+		BE7EDA231D61E4F2004BB922 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BE7EDA211D61E4F2004BB922 /* LaunchScreen.storyboard */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		BE7EDA121D61E4F2004BB922 /* FanFit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FanFit.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		BE7EDA151D61E4F2004BB922 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		BE7EDA171D61E4F2004BB922 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		BE7EDA1A1D61E4F2004BB922 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		BE7EDA1D1D61E4F2004BB922 /* FanFit.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = FanFit.xcdatamodel; sourceTree = "<group>"; };
+		BE7EDA1F1D61E4F2004BB922 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		BE7EDA221D61E4F2004BB922 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		BE7EDA241D61E4F2004BB922 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		BE7EDA0F1D61E4F2004BB922 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		BE7EDA091D61E4F2004BB922 = {
+			isa = PBXGroup;
+			children = (
+				BE7EDA141D61E4F2004BB922 /* FanFit */,
+				BE7EDA131D61E4F2004BB922 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		BE7EDA131D61E4F2004BB922 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				BE7EDA121D61E4F2004BB922 /* FanFit.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		BE7EDA141D61E4F2004BB922 /* FanFit */ = {
+			isa = PBXGroup;
+			children = (
+				BE7EDA151D61E4F2004BB922 /* AppDelegate.swift */,
+				BE7EDA171D61E4F2004BB922 /* ViewController.swift */,
+				BE7EDA191D61E4F2004BB922 /* Main.storyboard */,
+				BE7EDA1F1D61E4F2004BB922 /* Assets.xcassets */,
+				BE7EDA211D61E4F2004BB922 /* LaunchScreen.storyboard */,
+				BE7EDA241D61E4F2004BB922 /* Info.plist */,
+				BE7EDA1C1D61E4F2004BB922 /* FanFit.xcdatamodeld */,
+			);
+			path = FanFit;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		BE7EDA111D61E4F2004BB922 /* FanFit */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BE7EDA271D61E4F2004BB922 /* Build configuration list for PBXNativeTarget "FanFit" */;
+			buildPhases = (
+				BE7EDA0E1D61E4F2004BB922 /* Sources */,
+				BE7EDA0F1D61E4F2004BB922 /* Frameworks */,
+				BE7EDA101D61E4F2004BB922 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = FanFit;
+			productName = FanFit;
+			productReference = BE7EDA121D61E4F2004BB922 /* FanFit.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		BE7EDA0A1D61E4F2004BB922 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0730;
+				LastUpgradeCheck = 0730;
+				ORGANIZATIONNAME = "Almond Careers";
+				TargetAttributes = {
+					BE7EDA111D61E4F2004BB922 = {
+						CreatedOnToolsVersion = 7.3.1;
+					};
+				};
+			};
+			buildConfigurationList = BE7EDA0D1D61E4F2004BB922 /* Build configuration list for PBXProject "FanFit" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = BE7EDA091D61E4F2004BB922;
+			productRefGroup = BE7EDA131D61E4F2004BB922 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				BE7EDA111D61E4F2004BB922 /* FanFit */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		BE7EDA101D61E4F2004BB922 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BE7EDA231D61E4F2004BB922 /* LaunchScreen.storyboard in Resources */,
+				BE7EDA201D61E4F2004BB922 /* Assets.xcassets in Resources */,
+				BE7EDA1B1D61E4F2004BB922 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		BE7EDA0E1D61E4F2004BB922 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BE7EDA181D61E4F2004BB922 /* ViewController.swift in Sources */,
+				BE7EDA1E1D61E4F2004BB922 /* FanFit.xcdatamodeld in Sources */,
+				BE7EDA161D61E4F2004BB922 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		BE7EDA191D61E4F2004BB922 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BE7EDA1A1D61E4F2004BB922 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		BE7EDA211D61E4F2004BB922 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BE7EDA221D61E4F2004BB922 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		BE7EDA251D61E4F2004BB922 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		BE7EDA261D61E4F2004BB922 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		BE7EDA281D61E4F2004BB922 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = FanFit/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.almond.FanFit;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		BE7EDA291D61E4F2004BB922 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = FanFit/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.almond.FanFit;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		BE7EDA0D1D61E4F2004BB922 /* Build configuration list for PBXProject "FanFit" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BE7EDA251D61E4F2004BB922 /* Debug */,
+				BE7EDA261D61E4F2004BB922 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		BE7EDA271D61E4F2004BB922 /* Build configuration list for PBXNativeTarget "FanFit" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BE7EDA281D61E4F2004BB922 /* Debug */,
+				BE7EDA291D61E4F2004BB922 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		BE7EDA1C1D61E4F2004BB922 /* FanFit.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				BE7EDA1D1D61E4F2004BB922 /* FanFit.xcdatamodel */,
+			);
+			currentVersion = BE7EDA1D1D61E4F2004BB922 /* FanFit.xcdatamodel */;
+			path = FanFit.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = BE7EDA0A1D61E4F2004BB922 /* Project object */;
+}
