@@ -7,23 +7,65 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A4D7F8C0022B1F79E205AB15 /* Pods_FanFit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C16BEBC94C9B9720FFBA3344 /* Pods_FanFit.framework */; };
+		BE4591591D8ADE9A0046EFF0 /* ChooseActivityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE4591581D8ADE9A0046EFF0 /* ChooseActivityViewController.swift */; };
+		BE45915B1D8B08380046EFF0 /* CompetitionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE45915A1D8B08380046EFF0 /* CompetitionViewController.swift */; };
+		BE5EDB381D79DB15004D420D /* UserDashboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE5EDB371D79DB15004D420D /* UserDashboardViewController.swift */; };
+		BE5EDB3A1D7A03A4004D420D /* DashboardCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE5EDB391D7A03A4004D420D /* DashboardCollectionViewCell.swift */; };
+		BE6CCD3F1D70651900FAEED4 /* DataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE6CCD3E1D70651900FAEED4 /* DataModel.swift */; };
+		BE6CCD411D7069B500FAEED4 /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE6CCD401D7069B500FAEED4 /* App.swift */; };
+		BE6CCD431D7069C700FAEED4 /* AppMemory.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE6CCD421D7069C700FAEED4 /* AppMemory.swift */; };
+		BE6CCD471D7083AA00FAEED4 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE6CCD461D7083AA00FAEED4 /* LoginViewController.swift */; };
+		BE6CCD491D70879C00FAEED4 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE6CCD481D70879C00FAEED4 /* Utilities.swift */; };
 		BE7EDA161D61E4F2004BB922 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE7EDA151D61E4F2004BB922 /* AppDelegate.swift */; };
-		BE7EDA181D61E4F2004BB922 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE7EDA171D61E4F2004BB922 /* ViewController.swift */; };
 		BE7EDA1B1D61E4F2004BB922 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BE7EDA191D61E4F2004BB922 /* Main.storyboard */; };
 		BE7EDA1E1D61E4F2004BB922 /* FanFit.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = BE7EDA1C1D61E4F2004BB922 /* FanFit.xcdatamodeld */; };
 		BE7EDA201D61E4F2004BB922 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BE7EDA1F1D61E4F2004BB922 /* Assets.xcassets */; };
 		BE7EDA231D61E4F2004BB922 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BE7EDA211D61E4F2004BB922 /* LaunchScreen.storyboard */; };
+		BE7EDA2B1D61E707004BB922 /* LandingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE7EDA2A1D61E707004BB922 /* LandingViewController.swift */; };
+		BE9BC06A1D7C5FEF00AA4F80 /* PasswordResetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE9BC0691D7C5FEF00AA4F80 /* PasswordResetViewController.swift */; };
+		BEB1A8071D7AF642002A8ECC /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BEB1A8061D7AF642002A8ECC /* SWRevealViewController.m */; };
+		BEB1A80A1D7AF945002A8ECC /* MenuTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEB1A8091D7AF945002A8ECC /* MenuTableViewController.swift */; };
+		BEB1A80C1D7B0062002A8ECC /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEB1A80B1D7B0062002A8ECC /* ProfileViewController.swift */; };
+		BEB456CB1D8181530088688A /* ClubViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEB456CA1D8181530088688A /* ClubViewController.swift */; };
+		BEEFB1EA1D6F212F00FC2EEC /* SelectClubViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEEFB1E91D6F212F00FC2EEC /* SelectClubViewController.swift */; };
+		BEEFB1F01D6F36FC00FC2EEC /* AddessDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEEFB1EF1D6F36FC00FC2EEC /* AddessDetailsViewController.swift */; };
+		BEEFB1F21D6F371700FC2EEC /* AccountDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEEFB1F11D6F371700FC2EEC /* AccountDetailsViewController.swift */; };
+		BEEFB1F41D6F376300FC2EEC /* PersonalDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEEFB1F31D6F376300FC2EEC /* PersonalDetailsViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		47336A9CD0D3CFEA2EF42E3C /* Pods-FanFit.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FanFit.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FanFit/Pods-FanFit.debug.xcconfig"; sourceTree = "<group>"; };
+		BE4591581D8ADE9A0046EFF0 /* ChooseActivityViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChooseActivityViewController.swift; sourceTree = "<group>"; };
+		BE45915A1D8B08380046EFF0 /* CompetitionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CompetitionViewController.swift; sourceTree = "<group>"; };
+		BE5EDB371D79DB15004D420D /* UserDashboardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDashboardViewController.swift; sourceTree = "<group>"; };
+		BE5EDB391D7A03A4004D420D /* DashboardCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DashboardCollectionViewCell.swift; sourceTree = "<group>"; };
+		BE6CCD3E1D70651900FAEED4 /* DataModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataModel.swift; sourceTree = "<group>"; };
+		BE6CCD401D7069B500FAEED4 /* App.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = App.swift; sourceTree = "<group>"; };
+		BE6CCD421D7069C700FAEED4 /* AppMemory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppMemory.swift; sourceTree = "<group>"; };
+		BE6CCD461D7083AA00FAEED4 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		BE6CCD481D70879C00FAEED4 /* Utilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
 		BE7EDA121D61E4F2004BB922 /* FanFit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FanFit.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BE7EDA151D61E4F2004BB922 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		BE7EDA171D61E4F2004BB922 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		BE7EDA1A1D61E4F2004BB922 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		BE7EDA1D1D61E4F2004BB922 /* FanFit.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = FanFit.xcdatamodel; sourceTree = "<group>"; };
 		BE7EDA1F1D61E4F2004BB922 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BE7EDA221D61E4F2004BB922 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		BE7EDA241D61E4F2004BB922 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BE7EDA2A1D61E707004BB922 /* LandingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LandingViewController.swift; sourceTree = "<group>"; };
+		BE9BC0691D7C5FEF00AA4F80 /* PasswordResetViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PasswordResetViewController.swift; sourceTree = "<group>"; };
+		BEB1A8041D7AF641002A8ECC /* FanFit-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "FanFit-Bridging-Header.h"; sourceTree = "<group>"; };
+		BEB1A8051D7AF642002A8ECC /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
+		BEB1A8061D7AF642002A8ECC /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
+		BEB1A8091D7AF945002A8ECC /* MenuTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuTableViewController.swift; sourceTree = "<group>"; };
+		BEB1A80B1D7B0062002A8ECC /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		BEB456CA1D8181530088688A /* ClubViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClubViewController.swift; sourceTree = "<group>"; };
+		BEEFB1E91D6F212F00FC2EEC /* SelectClubViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectClubViewController.swift; sourceTree = "<group>"; };
+		BEEFB1EF1D6F36FC00FC2EEC /* AddessDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddessDetailsViewController.swift; sourceTree = "<group>"; };
+		BEEFB1F11D6F371700FC2EEC /* AccountDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountDetailsViewController.swift; sourceTree = "<group>"; };
+		BEEFB1F31D6F376300FC2EEC /* PersonalDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersonalDetailsViewController.swift; sourceTree = "<group>"; };
+		C16BEBC94C9B9720FFBA3344 /* Pods_FanFit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FanFit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E0C795DAD1E277F96A284A92 /* Pods-FanFit.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FanFit.release.xcconfig"; path = "Pods/Target Support Files/Pods-FanFit/Pods-FanFit.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,17 +73,38 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A4D7F8C0022B1F79E205AB15 /* Pods_FanFit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		BE6CCD441D7069D000FAEED4 /* App Logic */ = {
+			isa = PBXGroup;
+			children = (
+				BE7EDA151D61E4F2004BB922 /* AppDelegate.swift */,
+				BE6CCD401D7069B500FAEED4 /* App.swift */,
+				BE6CCD421D7069C700FAEED4 /* AppMemory.swift */,
+				BE6CCD481D70879C00FAEED4 /* Utilities.swift */,
+			);
+			name = "App Logic";
+			sourceTree = "<group>";
+		};
+		BE6CCD451D7069DA00FAEED4 /* App Model */ = {
+			isa = PBXGroup;
+			children = (
+				BE6CCD3E1D70651900FAEED4 /* DataModel.swift */,
+			);
+			name = "App Model";
+			sourceTree = "<group>";
+		};
 		BE7EDA091D61E4F2004BB922 = {
 			isa = PBXGroup;
 			children = (
 				BE7EDA141D61E4F2004BB922 /* FanFit */,
-				BE7EDA131D61E4F2004BB922 /* Products */,
+				F46E7E43C62B2242799B3A5B /* Pods */,
+				CBDA1715C98BB53D02199B14 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -51,20 +114,72 @@
 				BE7EDA121D61E4F2004BB922 /* FanFit.app */,
 			);
 			name = Products;
+			path = ..;
 			sourceTree = "<group>";
 		};
 		BE7EDA141D61E4F2004BB922 /* FanFit */ = {
 			isa = PBXGroup;
 			children = (
-				BE7EDA151D61E4F2004BB922 /* AppDelegate.swift */,
-				BE7EDA171D61E4F2004BB922 /* ViewController.swift */,
-				BE7EDA191D61E4F2004BB922 /* Main.storyboard */,
 				BE7EDA1F1D61E4F2004BB922 /* Assets.xcassets */,
+				BE7EDA191D61E4F2004BB922 /* Main.storyboard */,
 				BE7EDA211D61E4F2004BB922 /* LaunchScreen.storyboard */,
 				BE7EDA241D61E4F2004BB922 /* Info.plist */,
 				BE7EDA1C1D61E4F2004BB922 /* FanFit.xcdatamodeld */,
+				BEB1A8081D7AF648002A8ECC /* Supporting Files */,
+				BEEFB1F51D6F376C00FC2EEC /* Authentication */,
+				BE6CCD451D7069DA00FAEED4 /* App Model */,
+				BE6CCD441D7069D000FAEED4 /* App Logic */,
+				BE5EDB371D79DB15004D420D /* UserDashboardViewController.swift */,
+				BE5EDB391D7A03A4004D420D /* DashboardCollectionViewCell.swift */,
+				BEB1A8091D7AF945002A8ECC /* MenuTableViewController.swift */,
+				BEB1A80B1D7B0062002A8ECC /* ProfileViewController.swift */,
+				BEB456CA1D8181530088688A /* ClubViewController.swift */,
+				BE4591581D8ADE9A0046EFF0 /* ChooseActivityViewController.swift */,
+				BE45915A1D8B08380046EFF0 /* CompetitionViewController.swift */,
+				BE7EDA131D61E4F2004BB922 /* Products */,
 			);
 			path = FanFit;
+			sourceTree = "<group>";
+		};
+		BEB1A8081D7AF648002A8ECC /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				BEB1A8041D7AF641002A8ECC /* FanFit-Bridging-Header.h */,
+				BEB1A8051D7AF642002A8ECC /* SWRevealViewController.h */,
+				BEB1A8061D7AF642002A8ECC /* SWRevealViewController.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		BEEFB1F51D6F376C00FC2EEC /* Authentication */ = {
+			isa = PBXGroup;
+			children = (
+				BE7EDA2A1D61E707004BB922 /* LandingViewController.swift */,
+				BEEFB1E91D6F212F00FC2EEC /* SelectClubViewController.swift */,
+				BEEFB1F31D6F376300FC2EEC /* PersonalDetailsViewController.swift */,
+				BEEFB1EF1D6F36FC00FC2EEC /* AddessDetailsViewController.swift */,
+				BEEFB1F11D6F371700FC2EEC /* AccountDetailsViewController.swift */,
+				BE6CCD461D7083AA00FAEED4 /* LoginViewController.swift */,
+				BE9BC0691D7C5FEF00AA4F80 /* PasswordResetViewController.swift */,
+			);
+			name = Authentication;
+			sourceTree = "<group>";
+		};
+		CBDA1715C98BB53D02199B14 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				C16BEBC94C9B9720FFBA3344 /* Pods_FanFit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		F46E7E43C62B2242799B3A5B /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				47336A9CD0D3CFEA2EF42E3C /* Pods-FanFit.debug.xcconfig */,
+				E0C795DAD1E277F96A284A92 /* Pods-FanFit.release.xcconfig */,
+			);
+			name = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -74,9 +189,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = BE7EDA271D61E4F2004BB922 /* Build configuration list for PBXNativeTarget "FanFit" */;
 			buildPhases = (
+				F1E74EB962296F9FFAA19C3A /* [CP] Check Pods Manifest.lock */,
 				BE7EDA0E1D61E4F2004BB922 /* Sources */,
 				BE7EDA0F1D61E4F2004BB922 /* Frameworks */,
 				BE7EDA101D61E4F2004BB922 /* Resources */,
+				E7527733605D5B6FCF7BAD49 /* [CP] Embed Pods Frameworks */,
+				0F54875B40F091DD9D7D899D /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -99,6 +217,7 @@
 				TargetAttributes = {
 					BE7EDA111D61E4F2004BB922 = {
 						CreatedOnToolsVersion = 7.3.1;
+						DevelopmentTeam = 2Q9529P8CN;
 					};
 				};
 			};
@@ -133,14 +252,80 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		0F54875B40F091DD9D7D899D /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-FanFit/Pods-FanFit-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E7527733605D5B6FCF7BAD49 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-FanFit/Pods-FanFit-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F1E74EB962296F9FFAA19C3A /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		BE7EDA0E1D61E4F2004BB922 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BE7EDA181D61E4F2004BB922 /* ViewController.swift in Sources */,
+				BE6CCD411D7069B500FAEED4 /* App.swift in Sources */,
+				BE9BC06A1D7C5FEF00AA4F80 /* PasswordResetViewController.swift in Sources */,
+				BEB456CB1D8181530088688A /* ClubViewController.swift in Sources */,
+				BE5EDB3A1D7A03A4004D420D /* DashboardCollectionViewCell.swift in Sources */,
+				BEEFB1F21D6F371700FC2EEC /* AccountDetailsViewController.swift in Sources */,
 				BE7EDA1E1D61E4F2004BB922 /* FanFit.xcdatamodeld in Sources */,
+				BEB1A8071D7AF642002A8ECC /* SWRevealViewController.m in Sources */,
+				BE7EDA2B1D61E707004BB922 /* LandingViewController.swift in Sources */,
+				BEB1A80C1D7B0062002A8ECC /* ProfileViewController.swift in Sources */,
+				BE6CCD431D7069C700FAEED4 /* AppMemory.swift in Sources */,
+				BE4591591D8ADE9A0046EFF0 /* ChooseActivityViewController.swift in Sources */,
+				BEEFB1EA1D6F212F00FC2EEC /* SelectClubViewController.swift in Sources */,
+				BE5EDB381D79DB15004D420D /* UserDashboardViewController.swift in Sources */,
+				BE6CCD491D70879C00FAEED4 /* Utilities.swift in Sources */,
+				BEB1A80A1D7AF945002A8ECC /* MenuTableViewController.swift in Sources */,
+				BEEFB1F41D6F376300FC2EEC /* PersonalDetailsViewController.swift in Sources */,
+				BE6CCD3F1D70651900FAEED4 /* DataModel.swift in Sources */,
 				BE7EDA161D61E4F2004BB922 /* AppDelegate.swift in Sources */,
+				BEEFB1F01D6F36FC00FC2EEC /* AddessDetailsViewController.swift in Sources */,
+				BE45915B1D8B08380046EFF0 /* CompetitionViewController.swift in Sources */,
+				BE6CCD471D7083AA00FAEED4 /* LoginViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -251,23 +436,36 @@
 		};
 		BE7EDA281D61E4F2004BB922 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 47336A9CD0D3CFEA2EF42E3C /* Pods-FanFit.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = FanFit/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.almond.FanFit;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "FanFit/FanFit-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
 		BE7EDA291D61E4F2004BB922 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E0C795DAD1E277F96A284A92 /* Pods-FanFit.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = FanFit/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.almond.FanFit;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "FanFit/FanFit-Bridging-Header.h";
 			};
 			name = Release;
 		};
@@ -290,6 +488,7 @@
 				BE7EDA291D61E4F2004BB922 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
