@@ -161,6 +161,10 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
         return currentUser.firstName + " " + currentUser.lastName + " (\(currentUser.username))"
     }
     
+    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        return 60
+    }
+    
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("activity-cell", forIndexPath: indexPath)
         cell.textLabel?.text = activityCells[indexPath.row][0]

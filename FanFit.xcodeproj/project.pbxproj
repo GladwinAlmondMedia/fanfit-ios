@@ -24,6 +24,9 @@
 		BE7EDA231D61E4F2004BB922 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BE7EDA211D61E4F2004BB922 /* LaunchScreen.storyboard */; };
 		BE7EDA2B1D61E707004BB922 /* LandingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE7EDA2A1D61E707004BB922 /* LandingViewController.swift */; };
 		BE9BC06A1D7C5FEF00AA4F80 /* PasswordResetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE9BC0691D7C5FEF00AA4F80 /* PasswordResetViewController.swift */; };
+		BEAB735C1D8D82B300EDFB26 /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BEAB735B1D8D82B300EDFB26 /* HealthKit.framework */; };
+		BEAB735E1D8D836300EDFB26 /* WorkoutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEAB735D1D8D836300EDFB26 /* WorkoutViewController.swift */; };
+		BEAB73651D8D9A7000EDFB26 /* HealthKitManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEAB73641D8D9A7000EDFB26 /* HealthKitManager.swift */; };
 		BEB1A8071D7AF642002A8ECC /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BEB1A8061D7AF642002A8ECC /* SWRevealViewController.m */; };
 		BEB1A80A1D7AF945002A8ECC /* MenuTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEB1A8091D7AF945002A8ECC /* MenuTableViewController.swift */; };
 		BEB1A80C1D7B0062002A8ECC /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEB1A80B1D7B0062002A8ECC /* ProfileViewController.swift */; };
@@ -54,6 +57,10 @@
 		BE7EDA241D61E4F2004BB922 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BE7EDA2A1D61E707004BB922 /* LandingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LandingViewController.swift; sourceTree = "<group>"; };
 		BE9BC0691D7C5FEF00AA4F80 /* PasswordResetViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PasswordResetViewController.swift; sourceTree = "<group>"; };
+		BEAB735A1D8D82B200EDFB26 /* FanFit.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = FanFit.entitlements; sourceTree = "<group>"; };
+		BEAB735B1D8D82B300EDFB26 /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
+		BEAB735D1D8D836300EDFB26 /* WorkoutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorkoutViewController.swift; sourceTree = "<group>"; };
+		BEAB73641D8D9A7000EDFB26 /* HealthKitManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HealthKitManager.swift; sourceTree = "<group>"; };
 		BEB1A8041D7AF641002A8ECC /* FanFit-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "FanFit-Bridging-Header.h"; sourceTree = "<group>"; };
 		BEB1A8051D7AF642002A8ECC /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
 		BEB1A8061D7AF642002A8ECC /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
@@ -74,6 +81,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A4D7F8C0022B1F79E205AB15 /* Pods_FanFit.framework in Frameworks */,
+				BEAB735C1D8D82B300EDFB26 /* HealthKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -120,6 +128,7 @@
 		BE7EDA141D61E4F2004BB922 /* FanFit */ = {
 			isa = PBXGroup;
 			children = (
+				BEAB735A1D8D82B200EDFB26 /* FanFit.entitlements */,
 				BE7EDA1F1D61E4F2004BB922 /* Assets.xcassets */,
 				BE7EDA191D61E4F2004BB922 /* Main.storyboard */,
 				BE7EDA211D61E4F2004BB922 /* LaunchScreen.storyboard */,
@@ -129,16 +138,58 @@
 				BEEFB1F51D6F376C00FC2EEC /* Authentication */,
 				BE6CCD451D7069DA00FAEED4 /* App Model */,
 				BE6CCD441D7069D000FAEED4 /* App Logic */,
-				BE5EDB371D79DB15004D420D /* UserDashboardViewController.swift */,
-				BE5EDB391D7A03A4004D420D /* DashboardCollectionViewCell.swift */,
-				BEB1A8091D7AF945002A8ECC /* MenuTableViewController.swift */,
-				BEB1A80B1D7B0062002A8ECC /* ProfileViewController.swift */,
-				BEB456CA1D8181530088688A /* ClubViewController.swift */,
-				BE4591581D8ADE9A0046EFF0 /* ChooseActivityViewController.swift */,
-				BE45915A1D8B08380046EFF0 /* CompetitionViewController.swift */,
+				BEAB73601D8D888D00EDFB26 /* Dashboard */,
+				BEAB73611D8D889700EDFB26 /* Menu */,
+				BEAB73621D8D889D00EDFB26 /* Profile */,
+				BEAB73631D8D88A300EDFB26 /* Club */,
+				BEAB735F1D8D888400EDFB26 /* Competition */,
 				BE7EDA131D61E4F2004BB922 /* Products */,
 			);
 			path = FanFit;
+			sourceTree = "<group>";
+		};
+		BEAB735F1D8D888400EDFB26 /* Competition */ = {
+			isa = PBXGroup;
+			children = (
+				BE4591581D8ADE9A0046EFF0 /* ChooseActivityViewController.swift */,
+				BE45915A1D8B08380046EFF0 /* CompetitionViewController.swift */,
+				BEAB735D1D8D836300EDFB26 /* WorkoutViewController.swift */,
+				BEAB73641D8D9A7000EDFB26 /* HealthKitManager.swift */,
+			);
+			name = Competition;
+			sourceTree = "<group>";
+		};
+		BEAB73601D8D888D00EDFB26 /* Dashboard */ = {
+			isa = PBXGroup;
+			children = (
+				BE5EDB371D79DB15004D420D /* UserDashboardViewController.swift */,
+				BE5EDB391D7A03A4004D420D /* DashboardCollectionViewCell.swift */,
+			);
+			name = Dashboard;
+			sourceTree = "<group>";
+		};
+		BEAB73611D8D889700EDFB26 /* Menu */ = {
+			isa = PBXGroup;
+			children = (
+				BEB1A8091D7AF945002A8ECC /* MenuTableViewController.swift */,
+			);
+			name = Menu;
+			sourceTree = "<group>";
+		};
+		BEAB73621D8D889D00EDFB26 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				BEB1A80B1D7B0062002A8ECC /* ProfileViewController.swift */,
+			);
+			name = Profile;
+			sourceTree = "<group>";
+		};
+		BEAB73631D8D88A300EDFB26 /* Club */ = {
+			isa = PBXGroup;
+			children = (
+				BEB456CA1D8181530088688A /* ClubViewController.swift */,
+			);
+			name = Club;
 			sourceTree = "<group>";
 		};
 		BEB1A8081D7AF648002A8ECC /* Supporting Files */ = {
@@ -168,6 +219,7 @@
 		CBDA1715C98BB53D02199B14 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				BEAB735B1D8D82B300EDFB26 /* HealthKit.framework */,
 				C16BEBC94C9B9720FFBA3344 /* Pods_FanFit.framework */,
 			);
 			name = Frameworks;
@@ -212,12 +264,20 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0730;
-				LastUpgradeCheck = 0730;
+				LastUpgradeCheck = 0800;
 				ORGANIZATIONNAME = "Almond Careers";
 				TargetAttributes = {
 					BE7EDA111D61E4F2004BB922 = {
 						CreatedOnToolsVersion = 7.3.1;
 						DevelopmentTeam = 2Q9529P8CN;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+							com.apple.HealthKit = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -307,6 +367,7 @@
 			files = (
 				BE6CCD411D7069B500FAEED4 /* App.swift in Sources */,
 				BE9BC06A1D7C5FEF00AA4F80 /* PasswordResetViewController.swift in Sources */,
+				BEAB735E1D8D836300EDFB26 /* WorkoutViewController.swift in Sources */,
 				BEB456CB1D8181530088688A /* ClubViewController.swift in Sources */,
 				BE5EDB3A1D7A03A4004D420D /* DashboardCollectionViewCell.swift in Sources */,
 				BEEFB1F21D6F371700FC2EEC /* AccountDetailsViewController.swift in Sources */,
@@ -321,6 +382,7 @@
 				BE6CCD491D70879C00FAEED4 /* Utilities.swift in Sources */,
 				BEB1A80A1D7AF945002A8ECC /* MenuTableViewController.swift in Sources */,
 				BEEFB1F41D6F376300FC2EEC /* PersonalDetailsViewController.swift in Sources */,
+				BEAB73651D8D9A7000EDFB26 /* HealthKitManager.swift in Sources */,
 				BE6CCD3F1D70651900FAEED4 /* DataModel.swift in Sources */,
 				BE7EDA161D61E4F2004BB922 /* AppDelegate.swift in Sources */,
 				BEEFB1F01D6F36FC00FC2EEC /* AddessDetailsViewController.swift in Sources */,
@@ -365,8 +427,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -410,8 +474,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -430,6 +496,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -438,8 +505,10 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 47336A9CD0D3CFEA2EF42E3C /* Pods-FanFit.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = FanFit/FanFit.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = FanFit/Info.plist;
@@ -456,8 +525,10 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = E0C795DAD1E277F96A284A92 /* Pods-FanFit.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = FanFit/FanFit.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = FanFit/Info.plist;

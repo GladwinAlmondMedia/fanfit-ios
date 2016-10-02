@@ -76,6 +76,16 @@ class ActivityCategory : NSObject {
     var image : UIImage = UIImage()
 }
 
+class Workout : NSObject {
+    
+    var time : NSTimeInterval = NSTimeInterval()
+    
+    var distance : Double = 0.0
+    
+    var averageSpeed : Double = 0.0
+    
+    var caloriesBurnt : Int = 0
+}
 
 
 

@@ -12,16 +12,36 @@ class CompetitionViewController: UIViewController, UITableViewDelegate, UITableV
 
     @IBOutlet weak var activityBlurView: UIVisualEffectView!
     
+    @IBOutlet weak var startWorkoutButton: UIButton!
+    
     @IBOutlet weak var activityImage: UIImageView!
     
     @IBOutlet weak var tableView: UITableView!
     
-    let competitionDetails = [["Competition Details", "Greatest cumulative distance over the course of a week"], ["Start Date", "26th September 2016, 12:00"], ["Prize", "VIP tickets to home game."]]
+    let competitionDetails = [["Competition Details", "Greatest cumulative distance over the course of a week"], ["Start Date", "26th September 2016, 12:00"], ["Prize", "VIP tickets to home game."], ["Countdown", "4 days"], ["Top 3 Competitors", "1. Michael W\n2. John D\n3. Luke N"],["Points needed to top table", "15"]]
+    
+    let competitorDetails = [["Top 3 Competitors", "1.Michael W\n2.John D\n3.Luke N"],["Points needed to top table", "15"]]
+    
+    @IBAction func joinButtonTapped(sender: AnyObject) {
+        
+        let alertController = UIAlertController(title: "Join", message: "You have successfully joined this activity!", preferredStyle: .Alert)
+        
+        alertController.addAction(UIAlertAction(title: "Ok", style: .Default, handler: nil))
+        
+        self.presentViewController(alertController, animated: true, completion: nil)
+        
+        startWorkoutButton.hidden = false
+    }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        
+        self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .Plain, target: nil, action: nil)
+        
+        Utilities.setButtonBorder(startWorkoutButton)
         
         self.activityBlurView.layer.cornerRadius = self.activityBlurView.frame.size.width / 2
         self.activityBlurView.clipsToBounds = true
@@ -32,6 +52,10 @@ class CompetitionViewController: UIViewController, UITableViewDelegate, UITableV
         tableView.delegate = self
         
         tableView.backgroundColor = UIColor.clearColor()
+        
+        let competitionData = [competitionDetails, competitorDetails]
+        
+        startWorkoutButton.hidden = true
     }
 
     override func didReceiveMemoryWarning() {
@@ -59,9 +83,11 @@ class CompetitionViewController: UIViewController, UITableViewDelegate, UITableV
         let cell = tableView.dequeueReusableCellWithIdentifier("competition-cell", forIndexPath: indexPath)
         cell.textLabel?.text = competitionDetails[indexPath.row][0]
         cell.detailTextLabel?.text = competitionDetails[indexPath.row][1]
-        
         cell.textLabel?.textColor = UIColor.whiteColor()
+        
         cell.detailTextLabel?.numberOfLines = 0
+        cell.detailTextLabel?.font = UIFont.systemFontOfSize(17)
+        
         cell.layoutMargins = UIEdgeInsetsZero
         cell.separatorInset = UIEdgeInsetsZero
         cell.backgroundColor = UIColor.clearColor()

@@ -31,4 +31,6 @@ class AppMemory {
     
     var currentActivityCategory = ActivityCategory()
     
+    var currentWorkout = Workout()
+    
 }

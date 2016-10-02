@@ -9,6 +9,9 @@
 import UIKit
 
 class ChooseActivityViewController: UIViewController {
+    
+    //PREVENT USER FROM JOINING A NEW ACTIVITY IF ALREADY JOINED ONE
+    // DISPLAY MESSAGE SAYING ALREADY JOINED AN ACTIVITY AND MUST LEAVE OTHER ACTVITY TO JOIN ANOTHER ONE
 
     @IBOutlet weak var menuButton: UIBarButtonItem!
     
@@ -22,6 +25,8 @@ class ChooseActivityViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        
+        self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .Plain, target: nil, action: nil)
         
         menuButton.target = self.revealViewController()
         
