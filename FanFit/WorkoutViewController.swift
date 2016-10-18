@@ -82,11 +82,15 @@ class WorkoutViewController: UIViewController {
         totalTime = NSTimeInterval(minutes * 60) + NSTimeInterval(seconds)
         let averageSpeed = round(distance / totalTime)
         
-        App.Memory.currentWorkout.time = totalTime
-        App.Memory.currentWorkout.distance = distance
+        App.Memory.currentWorkout.totalTime = totalTime
+        App.Memory.currentWorkout.totalDistance = distance
         App.Memory.currentWorkout.averageSpeed = averageSpeed
         
-        let alertController = UIAlertController(title: "Workout Complete", message: "Distance:\(distance)m\nTime:\(totalTime)s\n\(averageSpeed)m/s", preferredStyle: .Alert)
+        let caloriesBurned = App.caloriesBurned(totalTime)
+        App.Memory.currentWorkout.totalCaloriesBurned = caloriesBurned
+        
+        
+        let alertController = UIAlertController(title: "Workout Complete", message: "Distance: \(distance)m\nTime: \(minutes)mins and \(seconds)seconds\nAverage Speed \(averageSpeed)m/s\nCalories Burned: \(round(caloriesBurned))", preferredStyle: .Alert)
         
         alertController.addAction(UIAlertAction(title: "Ok", style: .Default, handler: nil))
         

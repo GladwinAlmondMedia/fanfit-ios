@@ -16,11 +16,11 @@ class DashboardCollectionViewCell: UICollectionViewCell {
     
     var top3Labels = ["1. Michael W", "2. John D", "3. Luke N"]
     
-    var compHistoryLabels = ["Running: 25 points", "Walking: 57 points", "Cycling: 29 points"]
+    var FitnessHistoryLabels = ["Running: 25 points", "Walking: 57 points", "Cycling: 29 points"]
     
     var dashboardCellLabels = [[],[],[]]
     
-    let dashboardTitles = ["Overview", "Top 3 Competitors", "Competition History"]
+    let dashboardTitles = ["Overview", "Top 3 Competitors", "Fitness History"]
     
     @IBOutlet weak var overviewImageView: UIImageView!
     
@@ -37,11 +37,20 @@ class DashboardCollectionViewCell: UICollectionViewCell {
     func updateUI(indexPath: NSIndexPath) {
         
         // Points tally
-        overviewLabels[1] = String(App.Memory.currentUser.pointTally)
+        overviewLabels[1] = String(App.Memory.currentUserProfile.totalPoints)
+        FitnessHistoryLabels = ["","",""]
+        
+        if indexPath.row == 2 {
+            let usersWorkouts = App.Memory.usersWorkouts
+            
+            FitnessHistoryLabels[0] = "\(usersWorkouts[0].activity.category.name): \(usersWorkouts[0].pointsTally)"
+            FitnessHistoryLabels[1] = "\(usersWorkouts[1].activity.category.name): \(usersWorkouts[1].pointsTally)"
+            FitnessHistoryLabels[2] = "\(usersWorkouts[2].activity.category.name): \(usersWorkouts[2].pointsTally)"
+        }
         
         dashboardCellLabels[0] = overviewLabels
         dashboardCellLabels[1] = top3Labels
-        dashboardCellLabels[2] = compHistoryLabels
+        dashboardCellLabels[2] = FitnessHistoryLabels
         
         
         dashboardcellTitle.text = dashboardTitles[indexPath.row]

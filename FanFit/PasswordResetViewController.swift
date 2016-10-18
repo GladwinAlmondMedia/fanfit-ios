@@ -37,7 +37,7 @@ class PasswordResetViewController: UIViewController, ValidationDelegate {
     func validationSuccessful() {
         // submit the form
         
-        let currentUser = App.Memory.currentUser
+        let currentUser = App.Memory.currentUserProfile.user
         
         currentUser.password = password.text!
         

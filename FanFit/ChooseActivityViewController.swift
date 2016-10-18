@@ -37,12 +37,16 @@ class ChooseActivityViewController: UIViewController {
             self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
             self.view.addGestureRecognizer(self.revealViewController().tapGestureRecognizer())
         }
+        
+        self.runningBlurView.layoutIfNeeded()
         self.runningBlurView.layer.cornerRadius = self.runningBlurView.frame.size.width / 2
         self.runningBlurView.clipsToBounds = true
         
+        self.walkingBlurView.layoutIfNeeded()
         self.walkingBlurView.layer.cornerRadius = self.walkingBlurView.frame.size.width / 2
         self.walkingBlurView.clipsToBounds = true
         
+        self.cyclingBlurView.layoutIfNeeded()
         self.cyclingBlurView.layer.cornerRadius = self.cyclingBlurView.frame.size.width / 2
         self.cyclingBlurView.clipsToBounds = true
         

@@ -151,14 +151,13 @@ class PersonalDetailsViewController: UIViewController, UITextFieldDelegate, UIPi
     func validationSuccessful() {
         // submit the form
         
-        let currentUser = App.Memory.currentUser
+        let currentProfileUser = App.Memory.currentUserProfile
         
-        currentUser.title = usersTitle.text!
-        currentUser.firstName = firstName.text!
-        currentUser.lastName = lastName.text!
-        currentUser.gender = gender.text!
-        currentUser.weight = Int(weight.text!)!
-        currentUser.birthDate = finalDate
+        currentProfileUser.user.firstName = firstName.text!
+        currentProfileUser.user.lastName = lastName.text!
+        currentProfileUser.gender = gender.text!
+        currentProfileUser.weight = Double(weight.text!)!
+        currentProfileUser.birthDate = finalDate
         
         performSegueWithIdentifier("toAddress", sender: self)
     }
@@ -227,11 +226,10 @@ class PersonalDetailsViewController: UIViewController, UITextFieldDelegate, UIPi
     
     func setTextFields() {
         
-        let currentUser = App.Memory.currentUser
+        let currentUser = App.Memory.currentUserProfile
         
-        usersTitle.text = currentUser.title
-        firstName.text = currentUser.firstName
-        lastName.text = currentUser.lastName
+        firstName.text = currentUser.user.firstName
+        lastName.text = currentUser.user.lastName
         gender.text = currentUser.gender
         
         if App.Memory.updatingUser {

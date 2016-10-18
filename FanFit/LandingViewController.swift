@@ -22,6 +22,7 @@ class LandingViewController: UIViewController {
         Utilities.setButtonBorder(loginButton)
         
         App.Memory.updatingUser = false
+        
     }
 
     override func didReceiveMemoryWarning() {

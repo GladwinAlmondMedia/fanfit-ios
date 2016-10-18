@@ -4,7 +4,17 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>Alamofire.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods-FanFit.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>SimpleKeychain.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -14,15 +24,35 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>Toast-Swift.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>728218C5B6D95A9BE51B55A1CB3880E1</key>
+		<key>0A11668CFEDCB89E3F25E9A6F4CCE8C6</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>824C1148711B0F155CA13A3FC6B26C9F</key>
+		<key>0AB5AC83A1D88CCCB5C9D06045E6E536</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>76BEB2CEC593DB2937AEB363AAE7A934</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>79C040AFDDCE1BCBF6D8B5EB0B85887F</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>C382B36CDD0D2264398F0B704DEC2575</key>
 		<dict>
 			<key>primary</key>
 			<true/>

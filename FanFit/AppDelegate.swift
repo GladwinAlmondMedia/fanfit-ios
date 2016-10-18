@@ -24,6 +24,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName: UIColor.darkGrayColor()]
         
+        App.authenticateUser()
+        
+        App.setFootballClubs()
+        
         return true
     }
 

@@ -7,14 +7,15 @@
 //
 
 import UIKit
+import SimpleKeychain
 
 class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITableViewDelegate, UITableViewDataSource {
     
-    let activeTime = ["Time Active (minutes):", "136"]
-    let distanceCovered = ["Distance Covered (miles):", "14"]
-    let averageSpeed = ["Average Speed (mins per mile):", "12"]
-    let caloriesBurnt = ["Calories Burnt (kcal):", "40"]
-    let pointsTally = ["Total Points Tally:", "125"]
+    var activeTime = ["Time Active (minutes):", ""]
+    var distanceCovered = ["Distance Covered (miles):", ""]
+    var averageSpeed = ["Average Speed (mins per mile):", ""]
+    var caloriesBurned = ["Calories Burned (kcal):", ""]
+    var pointsTally = ["Total Points Tally:", ""]
     
     var activityCells = [[String]]()
 
@@ -93,10 +94,16 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
         
         let logoutActionButton: UIAlertAction = UIAlertAction(title: "Logout", style: .Destructive)
         { action -> Void in
+            // Remove token from keychain
+            let keychain = A0SimpleKeychain(service: "Auth0")
+            keychain.clearAll()
+            App.Memory.currentUserProfile = UserProfile()
             let storyboard = UIStoryboard.init(name: "Main", bundle: nil)
             let landingNav = storyboard.instantiateViewControllerWithIdentifier("Landing Nav")
             
             UIApplication.sharedApplication().keyWindow?.rootViewController = landingNav
+            
+            
         }
         actionSheetController.addAction(logoutActionButton)
         
@@ -106,7 +113,7 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
         if let pickedImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
             profileImageView.image = pickedImage
-            App.Memory.currentUser.profilePhoto = pickedImage
+            App.Memory.currentUserProfile.profilePhoto = pickedImage
         }
         
         dismissViewControllerAnimated(true, completion: nil)
@@ -121,13 +128,27 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
 
         // Do any additional setup after loading the view.
         
+        self.view.makeToastActivity(.Center)
+        UIApplication.sharedApplication().beginIgnoringInteractionEvents()
+        
+        App.setActivityFitnessStats { (fitnessStats) in
+            self.activeTime[1] = String(round(fitnessStats.timeActive))
+            self.distanceCovered[1] = String(round(fitnessStats.distanceCovered))
+            self.averageSpeed[1] = String(round(fitnessStats.averageSpeed))
+            self.caloriesBurned[1] = String(round(fitnessStats.caloriesBurned))
+            self.pointsTally[1] = String(round(fitnessStats.totalPoints))
+            
+            self.view.hideToastActivity()
+            UIApplication.sharedApplication().endIgnoringInteractionEvents()
+        }
+        
         tableView.delegate = self
         tableView.dataSource = self
         tableView.backgroundColor = UIColor.clearColor()
         
-        activityCells += [pointsTally, activeTime, distanceCovered, averageSpeed, caloriesBurnt]
+        activityCells += [pointsTally, activeTime, distanceCovered, averageSpeed, caloriesBurned]
         
-        self.profileImageView.image = App.Memory.currentUser.profilePhoto
+        self.profileImageView.image = App.Memory.currentUserProfile.profilePhoto
         
         self.profileImageView.layer.cornerRadius = 10.0
         self.profileImageView.clipsToBounds = true
@@ -156,7 +177,7 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
     }
     
     func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        let currentUser = App.Memory.currentUser
+        let currentUser = App.Memory.currentUserProfile.user
         
         return currentUser.firstName + " " + currentUser.lastName + " (\(currentUser.username))"
     }

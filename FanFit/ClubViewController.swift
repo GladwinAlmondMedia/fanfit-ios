@@ -14,12 +14,14 @@ class ClubViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     @IBOutlet weak var tableView: UITableView!
     
-    let upcomingActivities = [["Walking","Greatest cumulative calorie burn over the course of a week", "Greatest cumulative distance over the course of a week"],["Cycling", "Greatest cumulative distance over the course of a week", "Greatest cumulative time over the course of a week"],["Running", "Furthest distance by running daily for 1hour cumulatively"]]
+    var upcomingActivities = [["Walking","Greatest cumulative calorie burn over the course of a week", "Greatest cumulative distance over the course of a week"],["Cycling", "Greatest cumulative distance over the course of a week", "Greatest cumulative time over the course of a week"],["Running", "Furthest distance by running daily for 1hour cumulatively"]]
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        
+        
         
         menuButton.target = self.revealViewController()
         
@@ -59,6 +61,29 @@ class ClubViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("club-cell", forIndexPath: indexPath)
+        
+        let competition = App.Memory.competition
+        
+        var walkingUpcoming = upcomingActivities[0]
+        
+        walkingUpcoming[1] = competition.currentWalkingActivity.title + "\n" + competition.currentWalkingActivity.details
+        walkingUpcoming[2] = competition.nextWalkingActivity.title + "\n" + competition.nextWalkingActivity.details
+        
+        upcomingActivities[0] = walkingUpcoming
+        
+        var cyclingUpcoming = upcomingActivities[1]
+        
+        cyclingUpcoming[1] = competition.currentCyclingActivity.title + "\n" + competition.currentCyclingActivity.details
+        cyclingUpcoming[2] = competition.nextCyclingActivity.title + "\n" + competition.nextCyclingActivity.details
+        
+        upcomingActivities[1] = cyclingUpcoming
+        
+        var runningUpcoming = upcomingActivities[2]
+        
+        runningUpcoming[1] = competition.currentRunningActivity.title + "\n" + competition.currentRunningActivity.details
+        //        runningUpcoming[2] = competition.nextRunningActivity.title + "\n" + competition.nextRunningActivity.details
+        
+        upcomingActivities[2] = runningUpcoming
         
         cell.textLabel?.text = upcomingActivities[indexPath.section][indexPath.row + 1]
         cell.textLabel?.textColor = UIColor.whiteColor()

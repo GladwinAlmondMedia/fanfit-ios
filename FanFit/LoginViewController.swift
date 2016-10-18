@@ -64,12 +64,18 @@ class LoginViewController: UIViewController, ValidationDelegate {
     
     func validationSuccessful() {
         // submit the form
-        App.Memory.loginDummyUser()
         
-        let storyboard = UIStoryboard.init(name: "Main", bundle: nil)
-        let swReveal = storyboard.instantiateViewControllerWithIdentifier("SWReveal")
-        
-        UIApplication.sharedApplication().keyWindow?.rootViewController = swReveal
+        App.tokenAuth(username.text!, password: password.text!) { (success) in
+            if success == true {
+                
+                let storyboard = UIStoryboard.init(name: "Main", bundle: nil)
+                let swReveal = storyboard.instantiateViewControllerWithIdentifier("SWReveal")
+            
+                UIApplication.sharedApplication().keyWindow?.rootViewController = swReveal
+            } else {
+                self.errorLabel.hidden = false
+            }
+        }
     }
     
     func validationFailed(errors:[(Validatable ,ValidationError)]) {
@@ -106,6 +112,22 @@ class LoginViewController: UIViewController, ValidationDelegate {
         setValidators()
         
         errorLabel.hidden = true
+        
+        App.authenticateUser()
+    }
+    
+    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+        
+        self.view.endEditing(true)
+        
+    }
+    
+    func textFieldShouldReturn(TextField: UITextField) -> Bool {
+        
+        TextField.resignFirstResponder()
+        
+        return true
+        
     }
 
     override func didReceiveMemoryWarning() {

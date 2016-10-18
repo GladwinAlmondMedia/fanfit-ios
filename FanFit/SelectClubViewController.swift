@@ -38,7 +38,7 @@ class SelectClubViewController: UIViewController, UIPickerViewDelegate, UIPicker
         
         alert.addAction(UIAlertAction(title: "Confirm", style: .Default, handler: { (action) -> Void in
             
-            App.Memory.currentUser.footballClub = self.selectClubTextField.text!
+            App.Memory.currentUserProfile.footballClub.club = self.selectClubTextField.text!
             
             if App.Memory.updatingUser == false {
                 self.performSegueWithIdentifier("user-details", sender: self)
@@ -65,10 +65,8 @@ class SelectClubViewController: UIViewController, UIPickerViewDelegate, UIPicker
     
     @IBAction func nextButtonTapped(sender: UIButton) {
                 validator.validate(self)
-//        self.performSegueWithIdentifier("user-details", sender: self)
-        
     }
-    let clubOptions = ["Manchester United", "Chelsea", "Arsenal"]
+    var clubOptions = [String]()
     
     func donePicker() {
         
@@ -128,6 +126,15 @@ class SelectClubViewController: UIViewController, UIPickerViewDelegate, UIPicker
         setValidators()
         
         self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .Plain, target: nil, action: nil)
+        
+//        App.createAccount { (success) in
+//            print(success)
+//        }
+        
+        for footballClub in App.Memory.allFootballClubs {
+            clubOptions.append(footballClub.club)
+        }
+        
     }
     
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {

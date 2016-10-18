@@ -78,7 +78,7 @@ class AddessDetailsViewController: UIViewController, ValidationDelegate {
     func validationSuccessful() {
         // submit the form
         
-        let userAddress = App.Memory.currentUser.address
+        let userAddress = App.Memory.currentUserProfile.address
         
         userAddress.addressLine1 = addressLine1.text!
         userAddress.addressLine2 = addressLine2.text!
@@ -146,7 +146,7 @@ class AddessDetailsViewController: UIViewController, ValidationDelegate {
     
     func setTextFields() {
         
-        let userAddress = App.Memory.currentUser.address
+        let userAddress = App.Memory.currentUserProfile.address
         
         addressLine1.text = userAddress.addressLine1
         addressLine2.text = userAddress.addressLine2

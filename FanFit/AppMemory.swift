@@ -10,21 +10,20 @@ import Foundation
 
 class AppMemory {
     
-    var currentUser = AppUser()
+    var currentUserProfile = UserProfile()
     
     func loginDummyUser() {
         
-        currentUser.username = "jason_m"
-        currentUser.title = "Mr"
-        currentUser.firstName = "Jason"
-        currentUser.lastName = "Mann"
-        currentUser.gender = "Male"
-        currentUser.birthDate = NSDate()
-        currentUser.weight = 70
-        currentUser.pointTally = 125
-        currentUser.address.addressLine1 = "57 Clearance Street"
-        currentUser.address.townCity = "Kingston"
-        currentUser.address.postcode = "Kt5 9LA"
+//        currentUser.username = "jason_m"
+//        currentUser.firstName = "Jason"
+//        currentUser.lastName = "Mann"
+//        currentUser.gender = "Male"
+//        currentUser.birthDate = NSDate()
+//        currentUser.weight = 70
+//        currentUser.totalPoints = 125
+//        currentUser.address.addressLine1 = "57 Clearance Street"
+//        currentUser.address.townCity = "Kingston"
+//        currentUser.address.postcode = "Kt5 9LA"
     }
     
     var updatingUser = false
@@ -33,4 +32,13 @@ class AppMemory {
     
     var currentWorkout = Workout()
     
+    var validationErrors = ValidationErrors()
+    
+    var allFootballClubs = [FootballClub]()
+    
+    var usersWorkouts = [Workout]()
+    
+    var activityFitnessStats = ActivityFitnessStats()
+    
+    var competition = Competition()
 }

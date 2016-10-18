@@ -75,11 +75,15 @@ class AccountDetailsViewController: UIViewController, ValidationDelegate {
     func validationSuccessful() {
         // submit the form
         
-        let currentUser = App.Memory.currentUser
+        let currentUser = App.Memory.currentUserProfile.user
         
         currentUser.username = username.text!
         currentUser.emailAddress = emailAddress.text!
         currentUser.password = password.text!
+        
+        App.createAccount { (success) in
+            print(success)
+        }
         
         let alertController = UIAlertController(title: "Sign Up", message: "You have signed up successfully", preferredStyle: UIAlertControllerStyle.Alert)
         

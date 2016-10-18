@@ -17,6 +17,7 @@
 		BE6CCD431D7069C700FAEED4 /* AppMemory.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE6CCD421D7069C700FAEED4 /* AppMemory.swift */; };
 		BE6CCD471D7083AA00FAEED4 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE6CCD461D7083AA00FAEED4 /* LoginViewController.swift */; };
 		BE6CCD491D70879C00FAEED4 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE6CCD481D70879C00FAEED4 /* Utilities.swift */; };
+		BE6E0FA81DA16529004D8832 /* AppLogic.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE6E0FA71DA16529004D8832 /* AppLogic.swift */; };
 		BE7EDA161D61E4F2004BB922 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE7EDA151D61E4F2004BB922 /* AppDelegate.swift */; };
 		BE7EDA1B1D61E4F2004BB922 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BE7EDA191D61E4F2004BB922 /* Main.storyboard */; };
 		BE7EDA1E1D61E4F2004BB922 /* FanFit.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = BE7EDA1C1D61E4F2004BB922 /* FanFit.xcdatamodeld */; };
@@ -48,6 +49,7 @@
 		BE6CCD421D7069C700FAEED4 /* AppMemory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppMemory.swift; sourceTree = "<group>"; };
 		BE6CCD461D7083AA00FAEED4 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		BE6CCD481D70879C00FAEED4 /* Utilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
+		BE6E0FA71DA16529004D8832 /* AppLogic.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppLogic.swift; sourceTree = "<group>"; };
 		BE7EDA121D61E4F2004BB922 /* FanFit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FanFit.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BE7EDA151D61E4F2004BB922 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BE7EDA1A1D61E4F2004BB922 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -95,6 +97,7 @@
 				BE6CCD401D7069B500FAEED4 /* App.swift */,
 				BE6CCD421D7069C700FAEED4 /* AppMemory.swift */,
 				BE6CCD481D70879C00FAEED4 /* Utilities.swift */,
+				BE6E0FA71DA16529004D8832 /* AppLogic.swift */,
 			);
 			name = "App Logic";
 			sourceTree = "<group>";
@@ -134,10 +137,10 @@
 				BE7EDA211D61E4F2004BB922 /* LaunchScreen.storyboard */,
 				BE7EDA241D61E4F2004BB922 /* Info.plist */,
 				BE7EDA1C1D61E4F2004BB922 /* FanFit.xcdatamodeld */,
-				BEB1A8081D7AF648002A8ECC /* Supporting Files */,
-				BEEFB1F51D6F376C00FC2EEC /* Authentication */,
 				BE6CCD451D7069DA00FAEED4 /* App Model */,
 				BE6CCD441D7069D000FAEED4 /* App Logic */,
+				BEB1A8081D7AF648002A8ECC /* Supporting Files */,
+				BEEFB1F51D6F376C00FC2EEC /* Authentication */,
 				BEAB73601D8D888D00EDFB26 /* Dashboard */,
 				BEAB73611D8D889700EDFB26 /* Menu */,
 				BEAB73621D8D889D00EDFB26 /* Profile */,
@@ -365,6 +368,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BE6E0FA81DA16529004D8832 /* AppLogic.swift in Sources */,
 				BE6CCD411D7069B500FAEED4 /* App.swift in Sources */,
 				BE9BC06A1D7C5FEF00AA4F80 /* PasswordResetViewController.swift in Sources */,
 				BEAB735E1D8D836300EDFB26 /* WorkoutViewController.swift in Sources */,
@@ -518,6 +522,7 @@
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "FanFit/FanFit-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 2.3;
 			};
 			name = Debug;
 		};
@@ -537,6 +542,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "FanFit/FanFit-Bridging-Header.h";
+				SWIFT_VERSION = 2.3;
 			};
 			name = Release;
 		};
