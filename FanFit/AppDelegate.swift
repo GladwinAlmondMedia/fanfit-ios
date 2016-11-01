@@ -117,6 +117,55 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
         }
     }
+    
+    func application(app: UIApplication, openURL url: NSURL, options: [String : AnyObject]) -> Bool {
+        
+        let urlString = url.absoluteString
+        
+        print(urlString)
+        
+        if urlString!.lowercaseString.rangeOfString("passwordreset") != nil {
+            print("Password Reset")
+            
+            App.Memory.passwordResetUser = PasswordResetUser()
+            let passwordResetUser = App.Memory.passwordResetUser
+            print(passwordResetUser.resetingPassword)
+            let urlComponents = NSURLComponents(URL: url, resolvingAgainstBaseURL: false)
+            let items = (urlComponents?.queryItems)! as? [NSURLQueryItem] // {name = backgroundcolor, value = red}
+            
+                if let _ = items!.first, propertyName = items!.first?.name, propertyValue = items!.first?.value {
+                    
+                    if propertyName == "uid" {
+                        
+                        passwordResetUser.uid = propertyValue
+                    }
+                }
+            
+            if let tokenItem = items?[1] {
+                
+                var propertyName = tokenItem.name
+                
+                var propertyValue = tokenItem.value
+                
+                if propertyName == "token" {
+                    
+                    passwordResetUser.token = propertyValue!
+                }
+            }
+            passwordResetUser.resetingPassword = true
+            print("---------------------------------")
+            print(App.Memory.passwordResetUser.uid)
+            print(App.Memory.passwordResetUser.token)
+
+            
+            let storyboard = UIStoryboard.init(name: "Main", bundle: nil)
+            let resetVC = storyboard.instantiateViewControllerWithIdentifier("PasswordReset")
+            
+            UIApplication.sharedApplication().keyWindow?.rootViewController = resetVC
+        }
+        
+        return true
+    }
 
 }
 

@@ -28,6 +28,8 @@ class UserProfile : NSObject {
     
     var allowedClubChange = true
     
+    var photoUrl = ""
+    
     var profilePhoto = UIImage(named: "person-placeholder")
     
     var totalPoints = 0.0
@@ -137,6 +139,10 @@ class Competition : NSObject {
 class ValidationErrors : NSObject {
     
     var login = false
+    
+    var usernameError = ""
+    
+    var emailError = ""
 }
 
 class ActivityFitnessStats : NSObject {
@@ -152,8 +158,35 @@ class ActivityFitnessStats : NSObject {
     var caloriesBurned = 0.0
 }
 
+class TopUser : NSObject {
+    
+    var username = ""
+    
+    var userPoints = Double()
+}
 
+class TopCompetitors : NSObject {
+    
+    var first = TopUser()
+    
+    var second = TopUser()
+    
+    var third = TopUser()
+    
+}
 
+class PasswordResetUser : NSObject {
+    
+    var uid = ""
+    
+    var token = ""
+    
+    var password = ""
+    
+    var passwordConfirm = ""
+    
+    var resetingPassword = false
+}
 
 
 

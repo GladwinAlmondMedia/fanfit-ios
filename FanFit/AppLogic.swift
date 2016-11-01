@@ -15,7 +15,7 @@ extension App {
     static func tokenAuth(username : String, password : String, completitionHandler : (success : Bool) -> Void) {
         // parameters will be username and password
         
-        let url = "http://127.0.0.1:8000/api-token-auth/"
+        let url = "\(App.Memory.apiUrl)/api-token-auth/"
         
         let parameters = ["username" : username, "password" : password]
         
@@ -25,7 +25,7 @@ extension App {
         
         Alamofire.request(.POST, url, parameters: parameters, encoding: .JSON, headers: headers)
             .responseJSON { response in
-                //                debugPrint(response)
+             //   debugPrint(response)
                 
                 // will return token which I will save in keychain
                 if let json = response.result.value {
@@ -52,19 +52,19 @@ extension App {
         
         let keychain = A0SimpleKeychain(service: "Auth0")
         
-        let url = "http://127.0.0.1:8000/api/users/user-profile/"
+        let url = "\(App.Memory.apiUrl)/api/users/user-profile/"
         
         guard let token = keychain.stringForKey("token") else  {
             // User doesnt exist, user has to enter login details
             
             return
         }
-        
-        let headers = ["Accept": "application/json", "Authorization" : "Token \(token)"]
+
+        let headers = ["Accept": "application/json", "Authorization": "Token \(token)"]
         
         Alamofire.request(.GET, url, encoding: .JSON, headers: headers)
             .responseJSON { response in
-                //                debugPrint(response)
+//                debugPrint(response)
                 
                 if let userProfile = response.result.value {
                     // request gives user profile
@@ -91,8 +91,9 @@ extension App {
                         currentUserProfile.totalPoints = Double(totalPoints)!
                     }
                     
-                    //                    if let profilePhoto = userProfile["photo"] as? NSData{
-                    //                    }
+                    if let photoUrl = userProfile["photo"] as? String {
+                        currentUserProfile.photoUrl = photoUrl
+                    }
                     if let user = userProfile["user"] {
                         let currentUser = currentUserProfile.user
                         
@@ -161,7 +162,7 @@ extension App {
                     }
                     
                     if let birthdate_string = userProfile["birth_date"] as? String {
-                        let birthdate = self.getDateFromString(birthdate_string)
+                        let birthdate = Utilities.getDateFromString(birthdate_string)
                         currentUserProfile.birthDate = birthdate
                     }
                     
@@ -179,6 +180,7 @@ extension App {
                     }
                     
                     App.getCompetition()
+                    App.getTopCompetitors()
                     
                     let storyboard = UIStoryboard.init(name: "Main", bundle: nil)
                     let swReveal = storyboard.instantiateViewControllerWithIdentifier("SWReveal")
@@ -196,7 +198,7 @@ extension App {
     
     static func createAccount(completionHandler : (success : Bool) -> Void) {
         
-        let url = "http://127.0.0.1:8000/api/users/create-profile/"
+        let url = "\(App.Memory.apiUrl)/api/users/create-profile/"
         
         var parameters = [String : AnyObject]()
         
@@ -204,46 +206,72 @@ extension App {
         
         let newUser = newUserProfile.user
         
-        //        newUser.username = "test_user6"
-        //        newUser.password = "password123"
-        //        newUser.emailAddress = "tes6t@email.com"
-        //        newUser.firstName = "Test"
-        //        newUser.lastName = "User"
+//        newUser.username = "tuser90"
+//        newUser.password = "pass123"
+//        newUser.emailAddress = "tes6t@email.com"
+//        newUser.firstName = "Test"
+//        newUser.lastName = "User"
         
         let userParams = ["email" : newUser.emailAddress, "username" : newUser.username, "password" : newUser.password, "first_name" : newUser.firstName, "last_name" : newUser.lastName]
         
         let  newAddress = newUserProfile.address
         
-        //        newAddress.addressLine1 = "20 Grove Lea"
-        //        newAddress.townCity = "Hatfield"
-        //        newAddress.postcode = "Al10 8LA"
+//        newAddress.addressLine1 = "25 Grove Lea"
+//        newAddress.townCity = "Hatfield"
+//        newAddress.postcode = "Al10 8LA"
         
         let addressParams = ["address_line_1" : newAddress.addressLine1, "address_line_2" : newAddress.addressLine2, "town_city" : newAddress.townCity, "county" : newAddress.county, "postcode" : newAddress.postcode]
         
-        //        newUserProfile.footballClub.club = "Manchester United"
+//        newUserProfile.footballClub.club = "Manchester United"
         
         let clubParams = ["club" : newUserProfile.footballClub.club]
         
-        //        newUserProfile.gender = "Female"
-        //        newUserProfile.birthDate = NSDate()
+//        newUserProfile.gender = "Female"
+//        newUserProfile.birthDate = NSDate()
         
-        parameters = ["user" : userParams, "address" : addressParams, "gender" : newUserProfile.gender, "birth_date" : dateToJsonString(newUserProfile.birthDate) , "weight" : newUserProfile.weight, "football_club" : clubParams]
+        parameters = ["user" : userParams, "address" : addressParams, "gender" : newUserProfile.gender, "birth_date" : Utilities.dateToJsonString(newUserProfile.birthDate) , "weight" : newUserProfile.weight, "football_club" : clubParams]
         
         let headers = ["Accept": "application/json"]
         
         Alamofire.request(.POST, url, parameters: parameters, encoding: .JSON, headers: headers)
             .responseJSON { response in
-                //                debugPrint(response)
+             //   debugPrint(response)
                 
                 // Write validations for email, username and password
+                print(response.response?.statusCode)
+                if response.response?.statusCode == 400 {
+                    
+                    
+                    
+                    if let json = response.result.value {
+                        if let user = json["user"] {
+                            if let usernameError = user?["username"] {
+                                if usernameError?.objectAtIndex(0) != nil {
+                                    App.Memory.validationErrors.usernameError = (usernameError?.objectAtIndex(0) as? String)!
+                                }
+                            }
+                            
+                            if let emailError = user?["email"] {
+                                if emailError?.objectAtIndex(0) != nil {
+                                    App.Memory.validationErrors.emailError = (emailError?.objectAtIndex(0) as? String)!
+                                }
+                            }
+                        }
+                    }
+                    
+                    completionHandler(success: false)
+                    
+                } else {
+                    completionHandler(success: true)
+                }
         }
     }
     
     static func setFootballClubs() {
-        let url = "http://127.0.0.1:8000/api/competition/football-clubs/"
+        let url = "\(App.Memory.apiUrl)/api/competition/football-clubs/"
         
         Alamofire.request(.GET, url).responseJSON { (response) in
-            //            debugPrint(response)
+          //  debugPrint(response)
             
             if let data = response.data {
                 
@@ -282,10 +310,10 @@ extension App {
         
         // url takes USER id as parameter
         
-        let url = "http://127.0.0.1:8000/api/competition/workouts/\(currentUserProfile.user.id)/"
+        let url = "\(App.Memory.apiUrl)/api/competition/workouts/\(currentUserProfile.user.id)/"
         
         Alamofire.request(.GET, url).responseJSON { (response) in
-            //            debugPrint(response)
+       //     debugPrint(response)
             
             if let data = response.data {
                 
@@ -363,10 +391,10 @@ extension App {
         
         // Takes football club id as arguement to get all activities for that specific club
         
-        let url = "http://127.0.0.1:8000/api/competition/club/\(currentUserProfile.footballClub.id)/"
+        let url = "\(App.Memory.apiUrl)/api/competition/club/\(currentUserProfile.footballClub.id)/"
         
         Alamofire.request(.GET, url).responseJSON { (response) in
-            //            debugPrint(response)
+      //      debugPrint(response)
             
             if let data = response.data {
                 
@@ -446,10 +474,10 @@ extension App {
                             newActivity.details = details
                         }
                         if let startDateString = activityJson["start_date"] as? String {
-                            newActivity.startDate = self.getDateFromString(startDateString)
+                            newActivity.startDate = Utilities.getDateFromString(startDateString)
                         }
                         if let endDateString = activityJson["end_date"] as? String {
-                            newActivity.endDate = self.getDateFromString(endDateString)
+                            newActivity.endDate = Utilities.getDateFromString(endDateString)
                         }
                         if let prize = activityJson["prize"] as? String {
                             newActivity.prize = prize
@@ -482,7 +510,6 @@ extension App {
         for workout in userWorkouts {
             
             if workout.activity.id == userActivity.id {
-                
                 counter += 1
                 activityFitnessStats.timeActive += workout.totalTime
                 activityFitnessStats.distanceCovered += workout.totalDistance
@@ -493,10 +520,12 @@ extension App {
         
         activityFitnessStats.totalPoints = currentUserProfile.totalPoints
         
-        activityFitnessStats.timeActive /= counter
-        activityFitnessStats.distanceCovered /= counter
-        activityFitnessStats.averageSpeed /= counter
-        activityFitnessStats.caloriesBurned /= counter
+        if counter > 0.0 {
+            activityFitnessStats.timeActive /= counter
+            activityFitnessStats.distanceCovered /= counter
+            activityFitnessStats.averageSpeed /= counter
+            activityFitnessStats.caloriesBurned /= counter
+        }
         
         completionHandler(fitnessStats: activityFitnessStats)
         
@@ -505,7 +534,7 @@ extension App {
     static func caloriesBurned(time: NSTimeInterval) -> Double {
         
         let weight = App.Memory.currentUserProfile.weight
-        let timeHours = time / 3600.0
+        let timeHours = time / 60.0
         var MetValue = 0.0
         
         let currentActivityCategory = App.Memory.currentActivityCategory.name
@@ -526,23 +555,260 @@ extension App {
         return caloriesBurned
     }
     
-    static func getDateFromString(string: String) -> NSDate {
-        let dateFormatter = NSDateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssz"
+    
+    static func updateUserProfile() {
         
-        if let dateString = dateFormatter.dateFromString(string) {
-            return dateString
+        let currentUserProfile = App.Memory.currentUserProfile
+        
+        let url = "\(App.Memory.apiUrl)/api/users/update/profile/\(currentUserProfile.profileId)/activity/\(currentUserProfile.activity.id)/"
+        
+        let headers = ["Accept": "application/json"]
+        
+        let parameters = ["weight": currentUserProfile.weight, "total_points": currentUserProfile.totalPoints]
+        
+        Alamofire.request(.PUT, url, parameters: parameters, encoding: .JSON, headers: headers).responseJSON { (response) in
+           // debugPrint(response)
+            if let json = response.result.value {
+                
+                //                print(json)
+                
+            }
         }
-        
-        let calendar = NSCalendar.currentCalendar()
-        let twoDaysAgo = calendar.dateByAddingUnit(.Day, value: -2, toDate: NSDate(), options: [])
-        return twoDaysAgo!
         
     }
     
-    static func dateToJsonString(date: NSDate) -> String {
-        let dateFormatter = NSDateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd"
-        return dateFormatter.stringFromDate(date)
+    static func updateAddress() {
+        
+        let currentUserProfile = App.Memory.currentUserProfile
+        
+        let address = currentUserProfile.address
+        
+        let url = "\(App.Memory.apiUrl)/api/users/update/address/\(address.id)/"
+        
+        let headers = ["Accept": "application/json"]
+        
+        let addressParams = ["address_line_1" : address.addressLine1, "address_line_2" : address.addressLine2, "town_city" : address.townCity, "county" : address.county, "postcode" : address.postcode]
+        
+        Alamofire.request(.PUT, url, parameters: addressParams, encoding: .JSON, headers: headers).responseJSON { (response) in
+          //  debugPrint(response)
+            if let json = response.result.value {
+                
+                //                print(json)
+                
+            }
+        }
     }
+    
+    static func updateUser() {
+        
+        let currentUserProfile = App.Memory.currentUserProfile
+        
+        let user = currentUserProfile.user
+        
+        let url = "\(App.Memory.apiUrl)/api/users/update/user/\(user.id)/"
+        
+        let headers = ["Accept": "application/json"]
+        
+        let addressParams = ["email" : user.emailAddress, "username" : user.username, "password" : user.password, "first_name" : user.firstName, "last_name" : user.lastName]
+        
+        Alamofire.request(.PUT, url, parameters: addressParams, encoding: .JSON, headers: headers).responseJSON { (response) in
+          //  debugPrint(response)
+            if let json = response.result.value {
+                
+                //                print(json)
+                
+            }
+        }
+    }
+    
+    static func updatePassword() {
+        
+        let currentUserProfile = App.Memory.currentUserProfile
+        
+        let user = currentUserProfile.user
+        
+        let url = "\(App.Memory.apiUrl)/api/users/update/password/\(user.id)/"
+        
+        let headers = ["Accept": "application/json"]
+        
+        let addressParams = ["password" : user.password]
+        
+        Alamofire.request(.PUT, url, parameters: addressParams, encoding: .JSON, headers: headers).responseJSON { (response) in
+           // debugPrint(response)
+            if let json = response.result.value {
+                
+                //                print(json)
+                
+            }
+        }
+    }
+    
+    static func updatePhoto() {
+        
+        NSURLCache.sharedURLCache().removeAllCachedResponses()
+        
+        let currentUserProfile = App.Memory.currentUserProfile
+        
+        let URL = "\(App.Memory.apiUrl)/api/users/update/photo/\(currentUserProfile.profileId)/"
+        
+        Alamofire.upload(.PUT, URL, multipartFormData: {
+            multipartFormData in
+            
+            if  let imageData = UIImageJPEGRepresentation(currentUserProfile.profilePhoto!, 0.6) {
+                let date = NSDate()
+                let calendar = NSCalendar.currentCalendar()
+                let components = calendar.components([.Day , .Month , .Year], fromDate: date)
+                
+                let dateofUpload = String(components.day) + "-" + String(components.month) + "-" + String(components.year)
+                multipartFormData.appendBodyPart(data: imageData, name: "photo", fileName: "photo_\(dateofUpload).png", mimeType: "image/png")
+            }
+            
+            }, encodingCompletion: {
+                encodingResult in
+                
+                switch encodingResult {
+                    
+                case .Success(let upload, _, _):
+                    print("success")
+                    
+                    upload.responseJSON { response in
+                        debugPrint(response)
+                        if let json = response.result.value {
+                            
+                            if let photoUrl = json["photo"] as? String {
+                                currentUserProfile.photoUrl = photoUrl
+                            }
+                        }
+                    }
+                    
+                case .Failure(let encodingError):
+                    print(encodingError)
+                }
+        })
+        
+    }
+    
+    static func sendRestPasswordEmail(email: String) {
+        
+        let url = "\(App.Memory.apiUrl)/auth/password/reset/"
+        
+        let parameters = ["email": email]
+        
+        let headers = ["Accept": "application/json"]
+        
+        Alamofire.request(.POST, url, parameters: parameters, encoding: .JSON, headers: headers).responseJSON { (response) in
+           // debugPrint(response)
+        }
+    }
+    
+    static func ResetPassword() {
+        
+        let passwordResetUser = App.Memory.passwordResetUser
+        
+        let newPassword = App.Memory.currentUserProfile.user.password
+        
+        let url = "\(App.Memory.apiUrl)/auth/password/reset/confirm/"
+        
+        let headers = ["Accept": "application/json"]
+        
+        let parameters = ["uid": passwordResetUser.uid, "token": passwordResetUser.token, "new_password": newPassword]
+        
+        Alamofire.request(.POST, url, parameters: parameters, encoding: .JSON, headers: headers).responseJSON { (response) in
+ //           debugPrint(response)
+        }
+    }
+    
+    static func calculatePoints(time: NSTimeInterval, distance: Double, speed: Double) -> Double {
+        
+        let points = time * distance * speed * 10.0
+        return points.roundToPlaces(2) + 1.0
+    }
+    
+    static func postNewWorkout() {
+        
+        let newWorkout = App.Memory.currentWorkout
+        
+        let currentUser = App.Memory.currentUserProfile.user
+        
+        let url = "\(App.Memory.apiUrl)/api/competition/new-workout/user/\(currentUser.id)/activity/\(newWorkout.activity.id)/"
+        
+        let headers = ["Accept": "application/json"]
+        
+        let parameters = ["points_tally": newWorkout.pointsTally, "total_time": newWorkout.totalTime, "total_distance": newWorkout.totalDistance, "average_speed": newWorkout.averageSpeed, "total_calories_burned": newWorkout.totalCaloriesBurned]
+        
+        Alamofire.request(.POST, url, parameters: parameters, encoding: .JSON, headers: headers).responseJSON { (response) in
+          //  debugPrint(response)
+            if let json = response.result.value {
+                App.getWorkouts({ (success) in
+                    
+                })
+                //                print(json)
+                
+            }
+        }
+        
+    }
+    
+    static func getTopCompetitors() {
+        
+        let userProfile = App.Memory.currentUserProfile
+        
+        //Takes current users activity id
+        
+        // If user has no activity, id will be 0 and request will fail. So default values will be used
+        
+        let url = "\(App.Memory.apiUrl)/api/competition/top-competitors/\(userProfile.activity.id)/"
+        
+        Alamofire.request(.GET, url).responseJSON { (response) in
+          //  debugPrint(response)
+            
+            if let TopComp = response.result.value {
+                
+                let firstUser = App.Memory.topCompetitors.first
+                
+                if let first = TopComp["first"] {
+                    
+                    if let username = first?["username"] as? String {
+                        firstUser.username = username
+                    }
+                    
+                    if let userPoints = first?["user_points"] as? Int {
+                        firstUser.userPoints = Double(userPoints)
+                    }
+                }
+                
+                let secondUser = App.Memory.topCompetitors.second
+                
+                if let second = TopComp["second"] {
+                    
+                    if let username = second?["username"] as? String {
+                        secondUser.username = username
+                    }
+                    
+                    if let userPoints = second?["user_points"] as? Int {
+                        secondUser.userPoints = Double(userPoints)
+                    }
+                }
+                
+                let thirdUser = App.Memory.topCompetitors.third
+                
+                if let third = TopComp["third"] {
+                    
+                    if let username = third?["username"] as? String {
+                        thirdUser.username = username
+                    }
+                    
+                    if let userPoints = third?["user_points"] as? Int {
+                        thirdUser.userPoints = Double(userPoints)
+                    }
+                }
+            }
+        }
+    }
+    
+    
 }
+
+
+
+

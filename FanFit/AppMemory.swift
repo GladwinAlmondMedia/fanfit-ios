@@ -12,20 +12,6 @@ class AppMemory {
     
     var currentUserProfile = UserProfile()
     
-    func loginDummyUser() {
-        
-//        currentUser.username = "jason_m"
-//        currentUser.firstName = "Jason"
-//        currentUser.lastName = "Mann"
-//        currentUser.gender = "Male"
-//        currentUser.birthDate = NSDate()
-//        currentUser.weight = 70
-//        currentUser.totalPoints = 125
-//        currentUser.address.addressLine1 = "57 Clearance Street"
-//        currentUser.address.townCity = "Kingston"
-//        currentUser.address.postcode = "Kt5 9LA"
-    }
-    
     var updatingUser = false
     
     var currentActivityCategory = ActivityCategory()
@@ -41,4 +27,12 @@ class AppMemory {
     var activityFitnessStats = ActivityFitnessStats()
     
     var competition = Competition()
+    
+    var chosenActivity = Activity()
+    
+    var topCompetitors = TopCompetitors()
+    
+    var passwordResetUser = PasswordResetUser()
+    
+    let apiUrl = "http://fan-fit.eu-west-1.elasticbeanstalk.com"
 }

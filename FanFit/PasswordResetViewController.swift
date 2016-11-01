@@ -9,8 +9,9 @@
 import UIKit
 import SwiftValidator
 
-class PasswordResetViewController: UIViewController, ValidationDelegate {
+class PasswordResetViewController: UIViewController, ValidationDelegate, UITextFieldDelegate {
 
+//    @IBOutlet weak var email: UILabel!
     @IBOutlet weak var passwordErrorLabel: UILabel!
 
     @IBOutlet weak var confirmPasswordErrorLabel: UILabel!
@@ -41,10 +42,26 @@ class PasswordResetViewController: UIViewController, ValidationDelegate {
         
         currentUser.password = password.text!
         
-        let alertController = UIAlertController(title: "Password reset", message: "Your password has been reset successfully", preferredStyle: UIAlertControllerStyle.Alert)
+        if App.Memory.passwordResetUser.resetingPassword == false {
+        
+            App.updatePassword()
+            
+        } else {
+            // This is for users who have forgoten their password
+            App.ResetPassword()
+        }
+        let alertController = UIAlertController(title: "Password reset", message: "You have successfully changed your password.", preferredStyle: UIAlertControllerStyle.Alert)
         
         let okAction = UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default) { (alert) in
-            self.navigationController?.popViewControllerAnimated(true)
+            
+            if App.Memory.passwordResetUser.resetingPassword == false {
+                self.navigationController?.popViewControllerAnimated(true)
+            } else {
+                let storyboard = UIStoryboard.init(name: "Main", bundle: nil)
+                let swReveal = storyboard.instantiateViewControllerWithIdentifier("Landing Nav")
+                
+                UIApplication.sharedApplication().keyWindow?.rootViewController = swReveal
+            }
         }
         
         alertController.addAction(okAction)
@@ -64,12 +81,29 @@ class PasswordResetViewController: UIViewController, ValidationDelegate {
     }
     
     
+    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+        
+        self.view.endEditing(true)
+        
+    }
+    
+    func textFieldShouldReturn(TextField: UITextField) -> Bool {
+        
+        TextField.resignFirstResponder()
+        
+        return true
+        
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        
+//        email.text = App.Memory.currentUserProfile.user.emailAddress
         Utilities.setButtonBorder(resetPasswordButton)
+        
+        password.delegate = self
+        passwordConfirm.delegate = self
         
         passwordErrorLabel.hidden = true
         confirmPasswordErrorLabel.hidden = true

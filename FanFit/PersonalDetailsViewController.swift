@@ -13,6 +13,7 @@ class PersonalDetailsViewController: UIViewController, UITextFieldDelegate, UIPi
     
     var finalDate = NSDate()
     
+    @IBOutlet weak var exitButton: UIButton!
     @IBOutlet weak var usersTitle: UITextField!
     
     @IBOutlet weak var firstName: UITextField!
@@ -140,7 +141,7 @@ class PersonalDetailsViewController: UIViewController, UITextFieldDelegate, UIPi
     
     func setValidators() {
         
-        validator.registerField(usersTitle, rules: [RequiredRule()])
+//        validator.registerField(usersTitle, rules: [RequiredRule()])
         validator.registerField(firstName, rules: [RequiredRule()])
         validator.registerField(lastName, rules: [RequiredRule()])
         validator.registerField(gender, rules: [RequiredRule()])
@@ -222,6 +223,18 @@ class PersonalDetailsViewController: UIViewController, UITextFieldDelegate, UIPi
         
         errorLabel.hidden = true
         
+        exitButton.hidden = true
+        
+        if App.Memory.updatingUser {
+            exitButton.hidden = false
+        }
+        
+    }
+    
+    
+    @IBAction func exitButtonAction(sender: AnyObject) {
+        
+        self.dismissViewControllerAnimated(true, completion: nil)
     }
     
     func setTextFields() {

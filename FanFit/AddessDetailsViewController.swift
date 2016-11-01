@@ -9,7 +9,7 @@
 import UIKit
 import SwiftValidator
 
-class AddessDetailsViewController: UIViewController, ValidationDelegate {
+class AddessDetailsViewController: UIViewController, ValidationDelegate, UITextFieldDelegate {
     
     @IBOutlet weak var addressLine1: UITextField!
     
@@ -89,6 +89,9 @@ class AddessDetailsViewController: UIViewController, ValidationDelegate {
         if App.Memory.updatingUser == false {
             performSegueWithIdentifier("toAccount", sender: self)
         } else {
+            App.updateUserProfile()
+            App.updateAddress()
+            App.updateUser()
             self.presentingViewController?.presentingViewController?.dismissViewControllerAnimated(true, completion: nil)
         }
         
@@ -142,6 +145,12 @@ class AddessDetailsViewController: UIViewController, ValidationDelegate {
         } else {
             nextButton.setTitle("Update", forState: .Normal)
         }
+        
+        addressLine1.delegate = self
+        addressLine2.delegate = self
+        townCity.delegate = self
+        county.delegate = self
+        postcode.delegate = self
     }
     
     func setTextFields() {

@@ -8,8 +8,9 @@
 
 import UIKit
 import SwiftValidator
+import Alamofire
 
-class LoginViewController: UIViewController, ValidationDelegate {
+class LoginViewController: UIViewController, ValidationDelegate, UITextFieldDelegate {
     
     @IBOutlet weak var username: UITextField!
     @IBOutlet weak var password: UITextField!
@@ -28,9 +29,11 @@ class LoginViewController: UIViewController, ValidationDelegate {
             
             let emailTextField = alertController.textFields![0] as UITextField
             
+            App.sendRestPasswordEmail(emailTextField.text!)
+            
             self.dismissViewControllerAnimated(true, completion: nil)
             
-            let alertController2 = UIAlertController(title: "Password reset", message: "We have sent an email to \(emailTextField.text!) to reset your password", preferredStyle: UIAlertControllerStyle.Alert)
+            let alertController2 = UIAlertController(title: "Password reset", message: "We have sent an email to \(emailTextField.text!) to reset your password. Please wait a few minutes to recieve the email.", preferredStyle: UIAlertControllerStyle.Alert)
             
             let okAction = UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default, handler: nil)
             
@@ -73,6 +76,7 @@ class LoginViewController: UIViewController, ValidationDelegate {
             
                 UIApplication.sharedApplication().keyWindow?.rootViewController = swReveal
             } else {
+                self.errorLabel.text = "*Username and/or Password is incorrect"
                 self.errorLabel.hidden = false
             }
         }
@@ -114,6 +118,9 @@ class LoginViewController: UIViewController, ValidationDelegate {
         errorLabel.hidden = true
         
         App.authenticateUser()
+        
+        username.delegate = self
+        password.delegate = self
     }
     
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {

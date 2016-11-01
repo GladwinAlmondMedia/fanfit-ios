@@ -11,6 +11,57 @@ import UIKit
 
 class Utilities {
     
+    static func daysBetweenDates(date1: NSDate, date2: NSDate) -> Int {
+        
+        let calendar = NSCalendar.currentCalendar()
+        
+        // Replace the hour (time) of both dates with 00:00
+        let date1 = calendar.startOfDayForDate(date1)
+        let date2 = calendar.startOfDayForDate(date2)
+        
+        let flags = NSCalendarUnit.Day
+        let components = calendar.components(flags, fromDate: date1, toDate: date2, options: [])
+        
+        return components.day
+    }
+    
+    static func myDateTimeFormatter(date: NSDate) -> String {
+        
+        let mydate = date
+        let dateFormatter = NSDateFormatter()
+        //        dateFormatter.dateStyle = .FullStyle
+        dateFormatter.dateFormat = "EEEE dd MMMM"
+        
+        let time = date
+        let timeFormatter = NSDateFormatter()
+        timeFormatter.timeZone = NSTimeZone(name: "UTC")
+        timeFormatter.timeStyle = .ShortStyle
+        
+        let dateString = dateFormatter.stringFromDate(mydate)
+        let timeString = timeFormatter.stringFromDate(time)
+        return dateString + ", " + timeString
+    }
+    
+    static func getDateFromString(string: String) -> NSDate {
+        let dateFormatter = NSDateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssz"
+        
+        if let dateString = dateFormatter.dateFromString(string) {
+            return dateString
+        }
+        
+        let calendar = NSCalendar.currentCalendar()
+        let twoDaysAgo = calendar.dateByAddingUnit(.Day, value: -2, toDate: NSDate(), options: [])
+        return twoDaysAgo!
+        
+    }
+    
+    static func dateToJsonString(date: NSDate) -> String {
+        let dateFormatter = NSDateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        return dateFormatter.stringFromDate(date)
+    }
+    
     static func hexStringToUIColor (hex:String) -> UIColor {
         var cString:String = hex.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet() as NSCharacterSet).uppercaseString
         
@@ -102,4 +153,12 @@ private extension UIView {
         layer.addSublayer(borderLayer)
     }
     
+}
+
+extension Double {
+    /// Rounds the double to decimal places value
+    func roundToPlaces(places:Int) -> Double {
+        let divisor = pow(10.0, Double(places))
+        return round(self * divisor) / divisor
+    }
 }

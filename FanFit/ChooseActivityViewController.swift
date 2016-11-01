@@ -12,7 +12,7 @@ class ChooseActivityViewController: UIViewController {
     
     //PREVENT USER FROM JOINING A NEW ACTIVITY IF ALREADY JOINED ONE
     // DISPLAY MESSAGE SAYING ALREADY JOINED AN ACTIVITY AND MUST LEAVE OTHER ACTVITY TO JOIN ANOTHER ONE
-
+    
     @IBOutlet weak var menuButton: UIBarButtonItem!
     
     @IBOutlet weak var runningBlurView: UIVisualEffectView!
@@ -23,7 +23,7 @@ class ChooseActivityViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Do any additional setup after loading the view.
         
         self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .Plain, target: nil, action: nil)
@@ -65,7 +65,7 @@ class ChooseActivityViewController: UIViewController {
         cyclingBlurView.userInteractionEnabled = true
         cyclingBlurView.addGestureRecognizer(cyclingRecognizer)
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -78,35 +78,55 @@ class ChooseActivityViewController: UIViewController {
         
         let activityCategory = ActivityCategory()
         
+        var chosenActivity = Activity()
+        
         switch tappedImageView {
         case runningBlurView:
             activityCategory.name = "Running"
             activityCategory.image = UIImage(named: "Running-100")!
+            chosenActivity = App.Memory.competition.currentRunningActivity
         case walkingBlurView:
             activityCategory.name = "Walking"
             activityCategory.image = UIImage(named: "Walking-100")!
+            chosenActivity = App.Memory.competition.currentWalkingActivity
         case cyclingBlurView:
             activityCategory.name = "Cycling"
             activityCategory.image = UIImage(named: "Cycling-100")!
+            chosenActivity = App.Memory.competition.currentCyclingActivity
         default:
             activityCategory.name = "Running"
             activityCategory.image = UIImage(named: "Running-100")!
+            chosenActivity = App.Memory.competition.currentRunningActivity
         }
         
         App.Memory.currentActivityCategory = activityCategory
+        App.Memory.chosenActivity = chosenActivity
+        
+        let currentUserActivity = App.Memory.currentUserProfile.activity
                 
-        performSegueWithIdentifier("chose-activity", sender: self)
+        if currentUserActivity.id == chosenActivity.id || currentUserActivity.id == 0 {
+            
+            performSegueWithIdentifier("chose-activity", sender: self)
+        } else {
+            let alertController = UIAlertController(title: "Activity", message: "You have already joined an activity. Please leave that activity to join a new one", preferredStyle: .Alert)
+            
+            let okAction = UIAlertAction(title: "Ok", style: .Default, handler: nil)
+            
+            alertController.addAction(okAction)
+            
+            self.presentViewController(alertController, animated: true, completion: nil)
+        }
     }
     
-
+    
     /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+     // MARK: - Navigation
+     
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+     // Get the new view controller using segue.destinationViewController.
+     // Pass the selected object to the new view controller.
+     }
+     */
+    
 }

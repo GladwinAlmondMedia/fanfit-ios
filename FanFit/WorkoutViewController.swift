@@ -18,7 +18,7 @@ class WorkoutViewController: UIViewController {
     
     @IBOutlet weak var timerLabel: UILabel!
     
-    @IBOutlet weak var milesLabel: UILabel!
+    @IBOutlet weak var distanceLabel: UILabel!
     
     var zeroTime = NSTimeInterval()
     var timer : NSTimer = NSTimer()
@@ -55,10 +55,10 @@ class WorkoutViewController: UIViewController {
         
         timerLabel.text = "\(strMinutes):\(strSeconds)"
         
-        distance = round(distance)
+        distance = distance.roundToPlaces(3) // Rounds distance to 3 decimal places
     
-        let distanceQuantity = HKQuantity(unit: HKUnit.meterUnit(), doubleValue: distance)
-        milesLabel.text = distanceQuantity.description
+        let distanceQuantity = HKQuantity(unit: HKUnit.mileUnit(), doubleValue: distance)
+        distanceLabel.text = distanceQuantity.description
     }
     
     @IBAction func startTimer(sender: AnyObject) {
@@ -79,18 +79,37 @@ class WorkoutViewController: UIViewController {
         
         var totalTime = NSTimeInterval()
         
-        totalTime = NSTimeInterval(minutes * 60) + NSTimeInterval(seconds)
-        let averageSpeed = round(distance / totalTime)
+        totalTime = NSTimeInterval(minutes) + NSTimeInterval(seconds / 60) // Calculate minutes
+        let averageSpeed = totalTime / distance // Calculate minutes per mile
+        
+        App.Memory.currentWorkout.activity = App.Memory.chosenActivity
         
         App.Memory.currentWorkout.totalTime = totalTime
-        App.Memory.currentWorkout.totalDistance = distance
-        App.Memory.currentWorkout.averageSpeed = averageSpeed
+        App.Memory.currentWorkout.totalDistance = distance.roundToPlaces(2)
+        App.Memory.currentWorkout.averageSpeed = averageSpeed.roundToPlaces(2)
         
         let caloriesBurned = App.caloriesBurned(totalTime)
-        App.Memory.currentWorkout.totalCaloriesBurned = caloriesBurned
+        App.Memory.currentWorkout.totalCaloriesBurned = round(caloriesBurned)
         
+        let pointsTally = App.calculatePoints(totalTime, distance: distance, speed: averageSpeed)
         
-        let alertController = UIAlertController(title: "Workout Complete", message: "Distance: \(distance)m\nTime: \(minutes)mins and \(seconds)seconds\nAverage Speed \(averageSpeed)m/s\nCalories Burned: \(round(caloriesBurned))", preferredStyle: .Alert)
+        App.Memory.currentWorkout.pointsTally = pointsTally
+        
+        App.Memory.currentUserProfile.totalPoints += pointsTally
+        
+        if totalTime > 0.0 {
+            
+            App.postNewWorkout()
+            
+            // Get new top 3
+            App.getTopCompetitors()
+            
+            App.getWorkouts({ (success) in
+                print(success)
+            })
+        }
+        
+        let alertController = UIAlertController(title: "Workout Complete", message: "Distance: \(distance)m\nTime: \(minutes) mins and \(seconds) seconds\nAverage Speed \(round(averageSpeed)) mins per mile\nCalories Burned: \(round(caloriesBurned)) cal", preferredStyle: .Alert)
         
         alertController.addAction(UIAlertAction(title: "Ok", style: .Default, handler: nil))
         
@@ -141,7 +160,7 @@ extension WorkoutViewController: CLLocationManagerDelegate {
             if location.horizontalAccuracy < 20 {
                 //update distance
                 if self.locations.count > 0 {
-                    distance += location.distanceFromLocation(self.locations.last!)
+                    distance += (location.distanceFromLocation(self.locations.last!) * 0.00062137)
                 }
                 
                 //save location

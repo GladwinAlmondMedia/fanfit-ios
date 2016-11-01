@@ -26,8 +26,7 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
     @IBOutlet weak var blurView: UIVisualEffectView!
     
     @IBOutlet weak var tableView: UITableView!
-    
-    
+        
     @IBAction func settingsButtonTapped(sender: AnyObject) {
         
         let actionSheetController: UIAlertController = UIAlertController(title: "Settings", message: "", preferredStyle: .ActionSheet)
@@ -55,13 +54,7 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
         }
         actionSheetController.addAction(profileActionButton)
         
-        let workoutActionButton: UIAlertAction = UIAlertAction(title: "Workout Settings", style: .Default)
-        { action -> Void in
-            print("Workout")
-        }
-        actionSheetController.addAction(workoutActionButton)
-        
-        let passwordActionButton: UIAlertAction = UIAlertAction(title: "Password Reset", style: .Default)
+        let passwordActionButton: UIAlertAction = UIAlertAction(title: "Change Password", style: .Default)
         { action -> Void in
             self.performSegueWithIdentifier("password-reset", sender: self)
         }
@@ -114,6 +107,7 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
         if let pickedImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
             profileImageView.image = pickedImage
             App.Memory.currentUserProfile.profilePhoto = pickedImage
+            App.updatePhoto()
         }
         
         dismissViewControllerAnimated(true, completion: nil)

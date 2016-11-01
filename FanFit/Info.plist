@@ -18,10 +18,31 @@
 	<string>1.0</string>
 	<key>CFBundleSignature</key>
 	<string>????</string>
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLName</key>
+			<string>com.almond.FanFit</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>fanFitPasswordReset</string>
+			</array>
+		</dict>
+	</array>
 	<key>CFBundleVersion</key>
 	<string>1</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>NSCameraUsageDescription</key>
+	<string>$(PRODUCT_NAME) camera use</string>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>Fan Fit wants to track your workout</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>Fan Fit wants to track your workout</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>$(PRODUCT_NAME) photo use</string>
 	<key>UIBackgroundModes</key>
 	<array>
 		<string>location</string>
@@ -41,9 +62,10 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
-	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>Fan Fit wants to track your workout</string>
-	<key>NSLocationAlwaysUsageDescription</key>
-	<string>Fan Fit wants to track your workout</string>
+    <key>NSAppTransportSecurity</key>
+    <dict>
+        <key>NSAllowsArbitraryLoads</key>
+        <true/>
+    </dict>
 </dict>
 </plist>

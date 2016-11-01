@@ -9,7 +9,7 @@
 import UIKit
 import SwiftValidator
 
-class AccountDetailsViewController: UIViewController, ValidationDelegate {
+class AccountDetailsViewController: UIViewController, ValidationDelegate, UITextFieldDelegate {
     
     @IBOutlet weak var emailAddress: UITextField!
     @IBOutlet weak var username: UITextField!
@@ -81,21 +81,45 @@ class AccountDetailsViewController: UIViewController, ValidationDelegate {
         currentUser.emailAddress = emailAddress.text!
         currentUser.password = password.text!
         
-        App.createAccount { (success) in
-            print(success)
-        }
+        var message = ""
+        var usernameError = ""
+        var emailError = ""
         
-        let alertController = UIAlertController(title: "Sign Up", message: "You have signed up successfully", preferredStyle: UIAlertControllerStyle.Alert)
+        let validationErrors = App.Memory.validationErrors
+        App.createAccount { (success) in
+            if success == false {
+                usernameError = validationErrors.usernameError
+                emailError = validationErrors.emailError
+                print(usernameError)
+                message = usernameError + "\n" + emailError
+            } else {
+                print(success)
+                
+                message = "You have signed up successfully"
+            }
+        
+        let alertController = UIAlertController(title: "Sign Up", message: message, preferredStyle: UIAlertControllerStyle.Alert)
         
         let okAction = UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default) { (alert) in
-            let storyboard = UIStoryboard.init(name: "Main", bundle: nil)
-            let swReveal = storyboard.instantiateViewControllerWithIdentifier("SWReveal")
+            App.tokenAuth(self.username.text!, password: self.password.text!) { (success) in
+                if success == true {
+                    
+                    let storyboard = UIStoryboard.init(name: "Main", bundle: nil)
+                    let swReveal = storyboard.instantiateViewControllerWithIdentifier("SWReveal")
+                    
+                    UIApplication.sharedApplication().keyWindow?.rootViewController = swReveal
+                } else {
+                    
+                    
+                }
+            }
             
-            UIApplication.sharedApplication().keyWindow?.rootViewController = swReveal
         }
         
         alertController.addAction(okAction)
         self.presentViewController(alertController, animated: true, completion: nil)
+        }
+        
     }
     
     func validationFailed(errors:[(Validatable ,ValidationError)]) {
@@ -123,6 +147,9 @@ class AccountDetailsViewController: UIViewController, ValidationDelegate {
         passwordConfirm.layer.borderColor = UIColor.clearColor().CGColor
         
         validator.validate(self)
+        
+        App.Memory.validationErrors.usernameError = ""
+        App.Memory.validationErrors.emailError = ""
     }
     
     override func viewDidLoad() {
@@ -142,6 +169,11 @@ class AccountDetailsViewController: UIViewController, ValidationDelegate {
         usernameErrorLabel.hidden = true
         passwordErrorLabel.hidden = true
         confirmPasswordErrorLabel.hidden = true
+        
+        emailAddress.delegate = self
+        username.delegate = self
+        password.delegate = self
+        passwordConfirm.delegate = self
         
     }
 

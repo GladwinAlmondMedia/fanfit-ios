@@ -19,24 +19,6 @@ class UserDashboardViewController: UIViewController, UICollectionViewDelegate, U
     
     @IBOutlet weak var collectionView: UICollectionView!
     
-    //    var myCollectionViewHeight: CGFloat = 0.0 {
-    //        didSet {
-    //            if myCollectionViewHeight != oldValue {
-    //                collectionView.collectionViewLayout.invalidateLayout()
-    //                collectionView.collectionViewLayout.prepareLayout()
-    //            }
-    //        }
-    //    }
-    //
-    //    override func viewDidLayoutSubviews() {
-    //        myCollectionViewHeight = collectionView.bounds.size.height
-    //    }
-    //
-    //    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
-    //        return CGSize(width: 190, height: myCollectionViewHeight)
-    //    }
-    //
-    //
     func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
         return 1
     }
@@ -45,11 +27,21 @@ class UserDashboardViewController: UIViewController, UICollectionViewDelegate, U
         return 3
     }
     
+    var workoutsCache = NSCache()
+    
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         //        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("cell\(indexPath.row)", forIndexPath: indexPath)
         
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("cell", forIndexPath: indexPath) as! DashboardCollectionViewCell
-                    
+        
+        if let workouts = workoutsCache.objectForKey("workouts") {
+            
+            App.Memory.usersWorkouts = workouts as! [Workout]
+            
+            cell.updateUI(indexPath)
+            
+        } else {
+            
             self.view.makeToastActivity(.Center)
             
             UIApplication.sharedApplication().beginIgnoringInteractionEvents()
@@ -59,8 +51,11 @@ class UserDashboardViewController: UIViewController, UICollectionViewDelegate, U
                 UIApplication.sharedApplication().endIgnoringInteractionEvents()
                 cell.updateUI(indexPath)
                 
+                self.workoutsCache.setObject(App.Memory.usersWorkouts, forKey: "workouts")
             }
-
+            
+        }
+        
         return cell
     }
     
@@ -82,10 +77,48 @@ class UserDashboardViewController: UIViewController, UICollectionViewDelegate, U
         self.profileImageView.layer.cornerRadius = 10.0
         self.profileImageView.clipsToBounds = true
         
+        let userProfile = App.Memory.currentUserProfile
+        
+        if let photoUrl : String? = userProfile.photoUrl {
+            NSURLSession.sharedSession().dataTaskWithURL(NSURL(string: photoUrl!)!, completionHandler: { (data, response, error) in
+                if error != nil {
+                    print(error!)
+                    return
+                }
+                
+                let image = UIImage(data: data!)
+                
+                dispatch_async(dispatch_get_main_queue(), {
+                    App.Memory.currentUserProfile.profilePhoto = image
+                    self.profileImageView.image = image
+                })
+            }).resume()
+        }
+        
     }
     
     override func viewWillAppear(animated: Bool) {
-        profileImageView.image = App.Memory.currentUserProfile.profilePhoto
+        
+        let userProfile = App.Memory.currentUserProfile
+        //        if profileImageView.image!.isEqual(userProfile.profilePhoto) {
+        //            print("yeeaaahh-------------------------------")
+        profileImageView.image = userProfile.profilePhoto
+        //            if let photoUrl : String? = userProfile.photoUrl {
+        //                NSURLSession.sharedSession().dataTaskWithURL(NSURL(string: photoUrl!)!, completionHandler: { (data, response, error) in
+        //                    if error != nil {
+        //                        print(error!)
+        //                        return
+        //                    }
+        //
+        //                    let image = UIImage(data: data!)
+        //
+        //                    dispatch_async(dispatch_get_main_queue(), {
+        //                        App.Memory.currentUserProfile.profilePhoto = image
+        //                        self.profileImageView.image = image
+        //                    })
+        //                }).resume()
+        //            }
+        //        }
     }
     
     override func didReceiveMemoryWarning() {

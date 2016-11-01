@@ -11,6 +11,8 @@ import SwiftValidator
 
 class SelectClubViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, ValidationDelegate {
 
+    @IBOutlet weak var exitButton: UIButton!
+    
     @IBOutlet weak var selectClubTextField: UITextField!
     
     @IBOutlet weak var errorLabel: UILabel!
@@ -114,6 +116,10 @@ class SelectClubViewController: UIViewController, UIPickerViewDelegate, UIPicker
         selectClubTextField.inputAccessoryView = toolBar
     }
     
+    @IBAction func exitButtonTapped(sender: AnyObject) {
+        
+        self.dismissViewControllerAnimated(true, completion: nil)
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -133,6 +139,12 @@ class SelectClubViewController: UIViewController, UIPickerViewDelegate, UIPicker
         
         for footballClub in App.Memory.allFootballClubs {
             clubOptions.append(footballClub.club)
+        }
+        
+        exitButton.hidden = true
+        
+        if App.Memory.updatingUser {
+            exitButton.hidden = false
         }
         
     }
