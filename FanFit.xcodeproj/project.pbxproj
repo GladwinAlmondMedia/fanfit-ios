@@ -345,7 +345,8 @@
 				TargetAttributes = {
 					BE7EDA111D61E4F2004BB922 = {
 						CreatedOnToolsVersion = 7.3.1;
-						DevelopmentTeam = 2Q9529P8CN;
+						DevelopmentTeam = R5K7W9W5MK;
+						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
 								enabled = 1;
@@ -357,7 +358,7 @@
 					};
 					BE8411701DC49C0A006564AC = {
 						CreatedOnToolsVersion = 8.0;
-						DevelopmentTeam = 2Q9529P8CN;
+						DevelopmentTeam = R5K7W9W5MK;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -624,11 +625,12 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = FanFit/FanFit.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = R5K7W9W5MK;
 				INFOPLIST_FILE = FanFit/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.almond.FanFit;
+				PRODUCT_BUNDLE_IDENTIFIER = com.almondmedia.FanFit;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "FanFit/FanFit-Bridging-Header.h";
@@ -645,11 +647,12 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = FanFit/FanFit.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = R5K7W9W5MK;
 				INFOPLIST_FILE = FanFit/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.almond.FanFit;
+				PRODUCT_BUNDLE_IDENTIFIER = com.almondmedia.FanFit;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "FanFit/FanFit-Bridging-Header.h";
@@ -664,11 +667,11 @@
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = 2Q9529P8CN;
+				DEVELOPMENT_TEAM = R5K7W9W5MK;
 				INFOPLIST_FILE = PasswordResetTest/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.almond.FanFit.PasswordResetTest;
+				PRODUCT_BUNDLE_IDENTIFIER = com.almondmedia.FanFit.PasswordResetTest;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
@@ -683,11 +686,11 @@
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = 2Q9529P8CN;
+				DEVELOPMENT_TEAM = R5K7W9W5MK;
 				INFOPLIST_FILE = PasswordResetTest/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.almond.FanFit.PasswordResetTest;
+				PRODUCT_BUNDLE_IDENTIFIER = com.almondmedia.FanFit.PasswordResetTest;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 2.3;
